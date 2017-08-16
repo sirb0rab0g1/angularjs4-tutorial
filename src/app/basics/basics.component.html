@@ -1,0 +1,257 @@
+<div class="ui-g basic">
+  <div class="ui-g-12 ui-md-12 ui-lg-12">
+
+    <div class="variable">
+      <h1>Variable Declaration</h1>
+      <p-accordion class="Declaration">
+        <p-accordionTab header="{{dec.type}}" *ngFor="let dec of Declaration;let index = index;">
+          <p class="">{{dec.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{dec.code}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>{{str}}</md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>{{num}}</md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==2">
+              <md-toolbar>{{bol}}</md-toolbar>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="condition">
+      <h1>Conditions</h1>
+      <p-accordion class="Condition">
+        <p-accordionTab header="{{con.type}}" *ngFor="let con of Condition;let index = index;">
+          <p class="">{{con.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{con.code}}<br> {{con.code2}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                if you`re on browser mode try to f12 and look for output: True
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                <div *ngIf='x'>Found</div>
+                <div *ngIf='!x'>Not found</div>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==2">
+              <md-toolbar>
+                <div *ngIf='x; then templateTrue else templateFalse'></div>
+                <ng-template #templateTrue>Found</ng-template>
+                <ng-template #templateFalse>Not Found</ng-template>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="parse">
+      <h1>Parsing</h1>
+      <p-accordion class="Parsing">
+        <p-accordionTab header="{{par.type}}" *ngFor="let par of Parsing;let index = index;">
+          <p class="">{{par.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{par.code}}<br> {{par.code2}}
+
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                {{parsey1}}
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                {{parsey2}}
+              </md-toolbar>
+            </ng-template>
+
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="array">
+      <h1>Array</h1>
+      <p-accordion class="Array">
+        <p-accordionTab header="{{arr.type}}" *ngFor="let arr of Array">
+          <p class="">{{arr.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{arr.code}}
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="object">
+      <h1>Object</h1>
+      <p-accordion class="Object">
+        <p-accordionTab header="{{obj.type}}" *ngFor="let obj of Object">
+          <p class="">{{obj.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{obj.code}}
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="objectarray">
+      <h1>Object Array</h1>
+      <p-accordion class="Objectarray">
+        <p-accordionTab header="{{objarr.type}}" *ngFor="let objarr of Objectarray">
+          <p class="">{{objarr.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{objarr.code}}
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="loop">
+      <h1>Loops</h1>
+      <p-accordion class="Objectarray">
+        <p-accordionTab header="{{loop.type}}" *ngFor="let loop of Loops;let index = index;">
+          <p class="">{{loop.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{loop.code}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                if you`re on browser mode try to f12 and look for output: name
+                < looping </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                <ul class="">
+                  <li *ngFor="let name of names"> {{name}} </li>
+                </ul>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==2">
+              <md-toolbar>
+                <ul class="">
+                  <li *ngFor="let objarr of objarray"> {{objarr.fname}} </li>
+                </ul>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==3">
+              <md-toolbar>
+                <ul class="">
+                  <ul class="">
+                    <li *ngFor="let objarr of objarray;let in = index;"> {{in}} {{objarr.fname}} </li>
+                  </ul>
+                </ul>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="method">
+      <h1>Method</h1>
+      <p-accordion class="Method">
+        <p-accordionTab header="{{method.type}}" *ngFor="let method of Method;let index = index;">
+          <p class="">{{method.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{method.code}} <br> {{method.code2}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                <button (click)="withoutparameter()"> Withoutparameter </button>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                <button (click)="withparameter(10,'kent')"> Withparameter </button>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="arithmetic">
+      <h1>Arithmetic</h1>
+      <p-accordion class="Arithmetic">
+        <p-accordionTab header="{{ari.type}}" *ngFor="let ari of Arithmetic;let index = index">
+          <p class="">{{ari.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{ari.code}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                {{1 + 1}} , {{1 - 1}} , {{1 * 1}} , {{1 / 1}}
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="databinding">
+      <h1>Data Binding</h1>
+      <p-accordion class="Databinding">
+        <p-accordionTab header="{{db.type}}" *ngFor="let db of Databinding;let index = index;">
+          <p class="">{{db.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{db.intantiation}}<br> {{db.code}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-toolbar>
+                <input type="text" class="" [(ngModel)]="ngmodel"> {{ngmodel}}
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index == 1">
+              <md-toolbar>
+                <img src="{{img}}" height="50">
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+
+  </div>
+</div>

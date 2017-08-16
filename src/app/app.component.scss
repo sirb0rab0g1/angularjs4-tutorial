@@ -1,0 +1,49 @@
+.example-sidenav-fab-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.example-sidenav-fab-container md-sidenav {
+  max-width: 270px !important;
+}
+
+.example-sidenav-fab-container .mat-sidenav-content,
+.example-sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: auto;
+}
+
+.example-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.example-fab2 {
+  left: 20px;
+  top: 10px;
+  position: absolute;
+  z-index: 99999999;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-scrolling-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  a {
+    text-decoration: none;
+  }
+  .inside-collapse {
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-left: 0px;
+  }
+}
+
+.inside-collapse {
+  margin-left: -70px;
+  width: 270px;
+}
