@@ -1,5 +1,5 @@
 .basic {
-    overflow-y:auto;
+  overflow-y: auto;
   .variable {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -40,6 +40,14 @@
       margin-bottom: 10px;
     }
   }
+  .event {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    .p-class {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
   .method {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -61,6 +69,15 @@
     margin-bottom: 1em;
     .p-class {
       margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  .export {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    .p-class {
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
 }

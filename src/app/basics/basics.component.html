@@ -178,6 +178,37 @@
       </p-accordion>
     </div>
 
+    <div class="event">
+      <h1>Event</h1>
+      <md-toolbar>
+        <a href="https://developer.mozilla.org/en/docs/Web/Events/" mdTooltip="Follow this link for more information" mdTooltipPosition="below" class="">Referrences</a>
+      </md-toolbar>
+      <p-accordion class="Event">
+        <p-accordionTab header="{{evnt.type}}" *ngFor="let evnt of Event;let index = index;">
+          <p class="">{{evnt.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{evnt.html}}<br>{{evnt.code}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index==0">
+              <md-toolbar>
+                <button (click)="click()"> On click event </button>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                <button (dblclick)="dbclick()"> Double click event </button>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+
+    </div>
+
     <div class="method">
       <h1>Method</h1>
       <p-accordion class="Method">
@@ -206,6 +237,9 @@
 
     <div class="arithmetic">
       <h1>Arithmetic</h1>
+      <md-toolbar>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random" mdTooltip="Follow this link for more information" mdTooltipPosition="below" class="">Referrences</a>
+      </md-toolbar>
       <p-accordion class="Arithmetic">
         <p-accordionTab header="{{ari.type}}" *ngFor="let ari of Arithmetic;let index = index">
           <p class="">{{ari.explaination}}</p>
@@ -218,6 +252,16 @@
             <ng-template [ngIf]="index==0">
               <md-toolbar>
                 {{1 + 1}} , {{1 - 1}} , {{1 * 1}} , {{1 / 1}}
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==1">
+              <md-toolbar>
+                <button (click)="brandom()">Click me to random</button> {{basicrand}}
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index==2">
+              <md-toolbar>
+                <button (click)="arandom()">Click me to random</button> {{advancerand}}
               </md-toolbar>
             </ng-template>
           </md-card>
@@ -246,6 +290,22 @@
                 <img src="{{img}}" height="50">
               </md-toolbar>
             </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="export">
+      <h1>Export</h1>
+      <p-accordion class="Export">
+        <p-accordionTab header="{{ex.type}}" *ngFor="let ex of Export;let index = index;">
+          <p class="">{{ex.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{ex.code}}
           </md-card>
 
         </p-accordionTab>

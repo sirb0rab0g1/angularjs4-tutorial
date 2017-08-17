@@ -1,66 +1,79 @@
 import { Component, OnInit } from '@angular/core';
 
-export class declarations {
+export interface declarations {
   type: string;
   explaination: string;
   code: string;
 }
 
-export class conditions {
-  type: string;
-  explaination: string;
-  code: string;
-  code2: string;
-}
-
-export class parsings {
+export interface conditions {
   type: string;
   explaination: string;
   code: string;
   code2: string;
 }
 
-export class arrays {
-  type: string;
-  explaination: string;
-  code: string;
-}
-
-export class objects {
-  type: string;
-  explaination: string;
-  code: string;
-}
-
-export class objectarrays {
-  type: string;
-  explaination: string;
-  code: string;
-}
-
-export class loops {
-  type: string;
-  explaination: string;
-  code: string;
-}
-
-export class methods {
+export interface parsings {
   type: string;
   explaination: string;
   code: string;
   code2: string;
 }
 
-export class arithmetics {
+export interface arrays {
   type: string;
   explaination: string;
   code: string;
 }
 
-export class databindings {
+export interface objects {
   type: string;
   explaination: string;
-  intantiation:string;
+  code: string;
+}
+
+export interface objectarrays {
+  type: string;
+  explaination: string;
+  code: string;
+}
+
+export interface loops {
+  type: string;
+  explaination: string;
+  code: string;
+}
+
+export interface methods {
+  type: string;
+  explaination: string;
+  code: string;
+  code2: string;
+}
+
+export interface arithmetics {
+  type: string;
+  explaination: string;
+  code: string;
+}
+
+export interface databindings {
+  type: string;
+  explaination: string;
+  intantiation: string;
+  code: string;
+}
+
+export interface exports {
+  type: string;
+  explaination: string;
+  code: string;
+}
+
+export interface events {
+  type: string;
+  explaination: string;
+  html:string;
   code: string;
 }
 
@@ -83,6 +96,9 @@ export class BasicsComponent implements OnInit {
   Method = method;
   Arithmetic = arithmetic;
   Databinding = databinding;
+  Export = exported;
+  Event = event;
+
 
   constructor() {
     //conditions
@@ -143,6 +159,26 @@ export class BasicsComponent implements OnInit {
   ngmodel: string = '';
   img: string = "https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=6e8162f9e3bff101da85d93ff1ab8f91&oe=5A1AFCB0";
 
+  //arithmetic
+  basicrand: number;
+  advancerand: number;
+  brandom() {
+    this.basicrand = Math.random();
+    return this.basicrand;
+  }
+  arandom() {
+    this.advancerand = Math.random() * (1 * 100);
+    return this.advancerand;
+  }
+
+  //event
+  click(){
+    alert("Hello! Angular 4 - single click");
+  }
+  dbclick(){
+    alert("Hello! Angular 4 - double click")
+  }
+  
 }
 
 const declaration: declarations[] = [
@@ -263,6 +299,14 @@ const arithmetic: arithmetics[] = [
     type: 'Arithmetic inside binding',
     explaination: 'Basic arithmetic inside sa binding so far para sa akoa mao ni ang best way to do arithmetic operations',
     code: '{{1 + 1}} , {{1 - 1}} , {{1 * 1}} , {{1 / 1}}'
+  }, {
+    type: 'Basic Math Random',
+    explaination: 'Kanang gusto ka mag generate ug random numbers',
+    code: 'this.rand:number=Math.random();'
+  }, {
+    type: 'Advance Math Random',
+    explaination: 'Kanang gusto ka mag generate ug random numbers pero naay limit ex. 1-100 . regarding kung aha makita tanan function here`s the link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random',
+    code: 'this.advancerand = Math.random() * (1 * 100);'
   }
 ];
 
@@ -270,12 +314,40 @@ const databinding: databindings[] = [
   {
     type: "Two-way Data Binding",
     explaination: "Data binding gamit ang ngModel sa angular 4. WARNING: i import sa ang library import { FormsModule, ReactiveFormsModule } from '@angular/forms'; then i butang ang FormsModule ug ReactiveFormsModule inside imports",
-    intantiation:"ngmodel: string = '';",
+    intantiation: "ngmodel: string = '';",
     code: '<input type="text" class="" [(ngModel)]="ngmodel"> {{ngmodel}}'
   }, {
     type: "Property Binding",
     explaination: "Daghay way para ma bind ang src sa image like [src], src='{{}}' ug bind-src='' pero mas prefer nako ang src='{{}}' old but gold.",
-    intantiation:"img: string = 'https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=6e8162f9e3bff101da85d93ff1ab8f91&oe=5A1AFCB0';",
+    intantiation: "img: string = 'https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=6e8162f9e3bff101da85d93ff1ab8f91&oe=5A1AFCB0';",
     code: '<img src="{{img}}" height="50" >'
   }
-]
+];
+
+const exported: exports[] = [
+  {
+    type: "Interface",
+    explaination: "string",
+    code: "export interface exports { type: string; explaination: string; code: string; }"
+  }, {
+    type: "Class",
+    explaination: "string",
+    code: "export class exports { type: string; explaination: string; code: string; }"
+  }
+
+];
+
+const event: events[] = [
+  {
+    type: 'On Click',
+    explaination:'On click event' ,
+    html:'<button (click)="click()"> On click event </button>',
+    code: "click(){ alert('Hello! Angular 4'); }"
+  },{
+    type: 'Double click',
+    explaination:'double click event' ,
+    html:'<button (dblclick)="dbclick()"> Double click event </button>',
+    code: "dbclick(){ alert('Hello! Angular 4'); }"
+  }
+
+];

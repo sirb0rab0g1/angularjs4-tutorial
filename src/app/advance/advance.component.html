@@ -1,5 +1,40 @@
 <div class="ui-g" style="overflow-y:auto;">
   <div class="ui-g-12 ui-md-12 ui-lg-12">
-    Coming soon . . . . . .
+    <div class="httprequestget">
+      <h1>Http Request</h1>
+      <p-accordion class="Httprequestget">
+        <p-accordionTab header="{{httpg.type}}" *ngFor="let httpg of Httprequestget;let index = index;">
+          <p class="">{{httpg.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{httpg.code}}<br> {{httpg.code2}}
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-card>
+                <button (click)="getData()" >Click me to view request</button>
+                <ul class="">
+                  <li *ngFor="let x of results">
+                    {{x.City}} {{x.Country}} {{x.Name}}
+                  </li>
+                </ul>
+              </md-card>
+            </ng-template>
+            <ng-template [ngIf]="index == 1">
+              <md-toolbar>
+                <button (click)="putData()">Click me to send request</button>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index == 2">
+              <md-toolbar>
+                <button (click)="getTxt()">Click me to view json</button>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
   </div>
 </div>

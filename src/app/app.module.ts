@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //component
 import { AppComponent } from './app.component';
@@ -15,7 +16,8 @@ import {
   MdSidenavModule,
   MdCardModule,
   MdButtonModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdTooltipModule
 } from '@angular/material';
 
 //prime faces
@@ -39,7 +41,7 @@ const appRoutes: Routes = [
     AppComponent,
     BasicsComponent,
     AdvanceComponent,
-    PushNotificationComponent
+    PushNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,8 @@ const appRoutes: Routes = [
     MdToolbarModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MdTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
