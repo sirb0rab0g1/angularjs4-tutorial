@@ -1,0 +1,628 @@
+webpackJsonp([2],{
+
+/***/ "../../../../../src async recursive":
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = "../../../../../src async recursive";
+
+/***/ }),
+
+/***/ "../../../../../src/app/advance/advance.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br> {{httpg.code2}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button (click)=\"getData()\" >Click me to view request</button>\n                <ul class=\"\">\n                  <li *ngFor=\"let x of results\">\n                    {{x.City}} {{x.Country}} {{x.Name}}\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-toolbar>\n                <button (click)=\"putData()\">Click me to send request</button>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-toolbar>\n                <button (click)=\"getTxt()\">Click me to view json</button>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/advance/advance.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".httprequestget {\n  margin-top: 1em;\n  margin-bottom: 1em; }\n  .httprequestget .p-class {\n    margin-top: 10px;\n    margin-bottom: 10px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/advance/advance.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdvanceComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdvanceComponent = (function () {
+    function AdvanceComponent(http) {
+        this.http = http;
+        this.Httprequestget = httprequest;
+        this.displayedColumns = ['userId', 'userName', 'progress', 'color'];
+    }
+    AdvanceComponent.prototype.ngOnInit = function () {
+    };
+    AdvanceComponent.prototype.getData = function () {
+        var _this = this;
+        this.http.get('https://www.w3schools.com/angular/customers.php').subscribe(function (data) {
+            _this.results = data['records'];
+            console.log(_this.results);
+        }), function (err) {
+            if (err.error instanceof Error) {
+                console.log('An error occurred:', err.error.message);
+            }
+            else {
+                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+            }
+        };
+    };
+    AdvanceComponent.prototype.putData = function (username, password) {
+        var urlSearchParams = new URLSearchParams();
+        urlSearchParams.append('username', username);
+        urlSearchParams.append('password', password);
+        var body = urlSearchParams.toString();
+        this.http
+            .post('https://www.w3schools.com/angular/customers.php', body, {
+            // headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/x-www-form-urlencoded'),
+        })
+            .subscribe(function (data) {
+            alert('naka connect ta sa w3schools GREAT');
+        }, function (error) {
+            console.log(JSON.stringify(error.json()));
+        });
+    };
+    AdvanceComponent.prototype.getTxt = function () {
+        alert("coming soon . . . ");
+    };
+    return AdvanceComponent;
+}());
+AdvanceComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-advance',
+        template: __webpack_require__("../../../../../src/app/advance/advance.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/advance/advance.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */]) === "function" && _a || Object])
+], AdvanceComponent);
+
+var body = { name: 'Brad' };
+var httprequest = [
+    {
+        type: 'Http Request Get',
+        explaination: 'Una sa lahat i import sa nato ang library and i butang where in aha na locate imung component. Ibutang ni na library import { HttpClient, HttpErrorResponse } from "@angular/common/http";.And gusto nako naay live na api so sa w3schools nako kuhaon https://www.w3schools.com/angular/customers.php',
+        code: 'constructor(private http: HttpClient) {}',
+        code2: "this.http.get('https://www.w3schools.com/angular/customers.php').subscribe(data => { this.results = data['records']; console.log(this.results); })"
+    }, {
+        type: 'Http Request Post',
+        explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data. WARNING di mo dawat si w3schools ug POST data due sa ilang restrictions.',
+        code: "let urlSearchParams = new URLSearchParams(); urlSearchParams.append('username', username); urlSearchParams.append('password', password); let body = urlSearchParams.toString();",
+        code2: "this.http.post('https://www.w3schools.com/angular/customers.php', body, { headers: new HttpHeaders().set('Content-Type', 'application/json'), }) .subscribe( . . . );"
+    }, {
+        type: 'Http Request Json',
+        explaination: 'Coming soon . . . .',
+        code: "Coming soon . . . .",
+        code2: "Coming soon . . . ."
+    }
+];
+var _a;
+//# sourceMappingURL=advance.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- rule of responsive 101: main is bootstrap : sub is primefaces -->\n<push-notification #notification [title]=\"name\" [body]=\"content\" \n    [icon]=\"icon\"\n    (load)=\"notification.show()\" closeDelay=\"7000\">\n  </push-notification>\n<md-sidenav-container class=\"example-sidenav-fab-container\">\n  <md-sidenav #sidenav mode=\"side\" opened=\"true\">\n\n    <div class=\"example-scrolling-content\">\n      <div style=\"width:270px;\"></div>\n      <p-accordion>\n        <p-accordionTab header=\"AngularJS 4\" [selected]=\"true\">\n          <div class=\"finalcs inside-collapse ui-g\">\n            <div class=\"ui-g-12 ui-md-6 ui-lg-6\" *ngFor=\"let fixsheet of finalcs\">\n              <a md-raised-button [routerLink]=\"['/',fixsheet.link]\" routerLinkActive=\"active\" class=\"\">{{fixsheet.name}}</a>\n            </div>\n          </div>\n        </p-accordionTab>\n        <p-accordionTab header=\"AngularJS 1\">\n          Coming soon . . . . . .\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n  </md-sidenav>\n\n\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <md-toolbar color=\"primary\">\n        <button class=\"example-fab2\" (click)=\"sidenav.toggle()\">\n          <md-icon>. . . </md-icon>\n        </button>\n      </md-toolbar>\n      <div class=\"col-12\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n  </div>\n</md-sidenav-container>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".example-sidenav-fab-container {\n  width: 100%;\n  height: 100vh; }\n\n.example-sidenav-fab-container md-sidenav {\n  max-width: 270px !important; }\n\n.example-sidenav-fab-container .mat-sidenav-content,\n.example-sidenav-fab-container md-sidenav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: auto; }\n\n.example-fab {\n  position: absolute;\n  right: 20px;\n  bottom: 10px; }\n\n.example-fab2 {\n  left: 20px;\n  top: 10px;\n  position: absolute;\n  z-index: 99999999; }\n\n.example-full-width {\n  width: 100%; }\n\n.example-scrolling-content {\n  overflow-y: auto;\n  overflow-x: hidden; }\n  .example-scrolling-content a {\n    text-decoration: none; }\n  .example-scrolling-content .inside-collapse {\n    margin-top: -10px;\n    margin-bottom: -10px;\n    margin-left: 0px; }\n\n.inside-collapse {\n  margin-left: -70px;\n  width: 270px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* unused harmony export cheatSheet */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var cheatSheet = (function () {
+    function cheatSheet() {
+    }
+    return cheatSheet;
+}());
+
+var AppComponent = (function () {
+    function AppComponent() {
+        this.title = 'app';
+        this.finalcs = cs;
+        this.name = "Kent Fueconcillo";
+        this.content = "Hello! This is all about angular 4 tutorial";
+        this.icon = "https://scontent.fceb1-1.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=213e3372ea9a6687f80fa07822fb3059&oe=59F36FB0";
+    }
+    return AppComponent;
+}());
+AppComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-root',
+        template: __webpack_require__("../../../../../src/app/app.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/app.component.scss")],
+        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
+    })
+], AppComponent);
+
+var cs = [
+    { name: 'Basics', link: 'basic' },
+    { name: 'Advance', link: 'advance' },
+];
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__basics_basics_component__ = __webpack_require__("../../../../../src/app/basics/basics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__advance_advance_component__ = __webpack_require__("../../../../../src/app/advance/advance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hammerjs__ = __webpack_require__("../../../../hammerjs/hammer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_hammerjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__ = __webpack_require__("../../../../ng2-notifications/ng2-notifications.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+//component
+
+
+
+//angular material
+
+
+
+//prime faces
+
+//ngx-bootstrap
+//libraries
+
+//router
+var appRoutes = [
+    //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'basic', component: __WEBPACK_IMPORTED_MODULE_6__basics_basics_component__["a" /* BasicsComponent */] },
+    { path: 'advance', component: __WEBPACK_IMPORTED_MODULE_7__advance_advance_component__["a" /* AdvanceComponent */] },
+];
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
+AppModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__basics_basics_component__["a" /* BasicsComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__advance_advance_component__["a" /* AdvanceComponent */],
+            __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__["PushNotificationComponent"],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
+            __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["a" /* MdSidenavModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["RouterModule"].forRoot(appRoutes, { useHash: true }),
+            __WEBPACK_IMPORTED_MODULE_11_primeng_primeng__["AccordionModule"],
+            __WEBPACK_IMPORTED_MODULE_11_primeng_primeng__["FieldsetModule"],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["b" /* MdCardModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["c" /* MdButtonModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["d" /* MdToolbarModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClientModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["e" /* MdTooltipModule */],
+        ],
+        providers: [],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
+    })
+], AppModule);
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/basics/basics.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui-g basic\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"variable\">\n      <h1>Variable Declaration</h1>\n      <p-accordion class=\"Declaration\">\n        <p-accordionTab header=\"{{dec.type}}\" *ngFor=\"let dec of Declaration;let index = index;\">\n          <p class=\"\">{{dec.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{dec.code}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>{{str}}</md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>{{num}}</md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==2\">\n              <md-toolbar>{{bol}}</md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"condition\">\n      <h1>Conditions</h1>\n      <p-accordion class=\"Condition\">\n        <p-accordionTab header=\"{{con.type}}\" *ngFor=\"let con of Condition;let index = index;\">\n          <p class=\"\">{{con.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{con.code}}<br> {{con.code2}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                if you`re on browser mode try to f12 and look for output: True\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                <div *ngIf='x'>Found</div>\n                <div *ngIf='!x'>Not found</div>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==2\">\n              <md-toolbar>\n                <div *ngIf='x; then templateTrue else templateFalse'></div>\n                <ng-template #templateTrue>Found</ng-template>\n                <ng-template #templateFalse>Not Found</ng-template>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"parse\">\n      <h1>Parsing</h1>\n      <p-accordion class=\"Parsing\">\n        <p-accordionTab header=\"{{par.type}}\" *ngFor=\"let par of Parsing;let index = index;\">\n          <p class=\"\">{{par.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{par.code}}<br> {{par.code2}}\n\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                {{parsey1}}\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                {{parsey2}}\n              </md-toolbar>\n            </ng-template>\n\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"array\">\n      <h1>Array</h1>\n      <p-accordion class=\"Array\">\n        <p-accordionTab header=\"{{arr.type}}\" *ngFor=\"let arr of Array\">\n          <p class=\"\">{{arr.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{arr.code}}\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"object\">\n      <h1>Object</h1>\n      <p-accordion class=\"Object\">\n        <p-accordionTab header=\"{{obj.type}}\" *ngFor=\"let obj of Object\">\n          <p class=\"\">{{obj.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{obj.code}}\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"objectarray\">\n      <h1>Object Array</h1>\n      <p-accordion class=\"Objectarray\">\n        <p-accordionTab header=\"{{objarr.type}}\" *ngFor=\"let objarr of Objectarray\">\n          <p class=\"\">{{objarr.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{objarr.code}}\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"loop\">\n      <h1>Loops</h1>\n      <p-accordion class=\"Objectarray\">\n        <p-accordionTab header=\"{{loop.type}}\" *ngFor=\"let loop of Loops;let index = index;\">\n          <p class=\"\">{{loop.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{loop.code}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                if you`re on browser mode try to f12 and look for output: name\n                < looping </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                <ul class=\"\">\n                  <li *ngFor=\"let name of names\"> {{name}} </li>\n                </ul>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==2\">\n              <md-toolbar>\n                <ul class=\"\">\n                  <li *ngFor=\"let objarr of objarray\"> {{objarr.fname}} </li>\n                </ul>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==3\">\n              <md-toolbar>\n                <ul class=\"\">\n                  <ul class=\"\">\n                    <li *ngFor=\"let objarr of objarray;let in = index;\"> {{in}} {{objarr.fname}} </li>\n                  </ul>\n                </ul>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"event\">\n      <h1>Event</h1>\n      <md-toolbar>\n        <a href=\"https://developer.mozilla.org/en/docs/Web/Events/\" mdTooltip=\"Follow this link for more information\" mdTooltipPosition=\"below\" class=\"\">Referrences</a>\n      </md-toolbar>\n      <p-accordion class=\"Event\">\n        <p-accordionTab header=\"{{evnt.type}}\" *ngFor=\"let evnt of Event;let index = index;\">\n          <p class=\"\">{{evnt.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{evnt.html}}<br>{{evnt.code}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                <button (click)=\"click()\"> On click event </button>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                <button (dblclick)=\"dbclick()\"> Double click event </button>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n\n    </div>\n\n    <div class=\"method\">\n      <h1>Method</h1>\n      <p-accordion class=\"Method\">\n        <p-accordionTab header=\"{{method.type}}\" *ngFor=\"let method of Method;let index = index;\">\n          <p class=\"\">{{method.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{method.code}} <br> {{method.code2}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                <button (click)=\"withoutparameter()\"> Withoutparameter </button>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                <button (click)=\"withparameter(10,'kent')\"> Withparameter </button>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"arithmetic\">\n      <h1>Arithmetic</h1>\n      <md-toolbar>\n        <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random\" mdTooltip=\"Follow this link for more information\" mdTooltipPosition=\"below\" class=\"\">Referrences</a>\n      </md-toolbar>\n      <p-accordion class=\"Arithmetic\">\n        <p-accordionTab header=\"{{ari.type}}\" *ngFor=\"let ari of Arithmetic;let index = index\">\n          <p class=\"\">{{ari.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ari.code}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index==0\">\n              <md-toolbar>\n                {{1 + 1}} , {{1 - 1}} , {{1 * 1}} , {{1 / 1}}\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==1\">\n              <md-toolbar>\n                <button (click)=\"brandom()\">Click me to random</button> {{basicrand}}\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index==2\">\n              <md-toolbar>\n                <button (click)=\"arandom()\">Click me to random</button> {{advancerand}}\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"databinding\">\n      <h1>Data Binding</h1>\n      <p-accordion class=\"Databinding\">\n        <p-accordionTab header=\"{{db.type}}\" *ngFor=\"let db of Databinding;let index = index;\">\n          <p class=\"\">{{db.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{db.intantiation}}<br> {{db.code}}\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-toolbar>\n                <input type=\"text\" class=\"\" [(ngModel)]=\"ngmodel\"> {{ngmodel}}\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-toolbar>\n                <img src=\"{{img}}\" height=\"50\">\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"export\">\n      <h1>Export</h1>\n      <p-accordion class=\"Export\">\n        <p-accordionTab header=\"{{ex.type}}\" *ngFor=\"let ex of Export;let index = index;\">\n          <p class=\"\">{{ex.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ex.code}}\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/basics/basics.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".basic {\n  overflow-y: auto; }\n  .basic .variable {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .variable .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .condition {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .condition .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .parse {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .parse .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .array {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n  .basic .object {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n  .basic .objectarray {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .objectarray .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .event {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .event .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .method {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .method .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .arithmetic {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .arithmetic .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .databinding {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .databinding .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .export {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .export .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/basics/basics.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BasicsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BasicsComponent = (function () {
+    function BasicsComponent() {
+        this.Declaration = declaration;
+        this.Condition = condition;
+        this.Parsing = parsing;
+        this.Array = array;
+        this.Object = object;
+        this.Objectarray = objectarray;
+        this.Loops = loop;
+        this.Method = method;
+        this.Arithmetic = arithmetic;
+        this.Databinding = databinding;
+        this.Export = exported;
+        this.Event = event;
+        this.x = 10;
+        //declarations
+        this.str = 'this is string';
+        this.num = 10;
+        this.bol = true;
+        //parsings string to int - int to string
+        this.parsex1 = '10';
+        this.parsey1 = +this.parsex1;
+        this.parsex2 = 10;
+        this.parsey2 = String(this.parsex2);
+        this.names = ['kent', 'john', 'lloyd'];
+        this.nums = [1, 2, 3];
+        this.named = {
+            fname: 'kent',
+            mname: 'dela cruz',
+            lname: 'fueconcillo'
+        };
+        this.objarray = [
+            { fname: 'kent' },
+            { fname: 'daniel' },
+            { fname: 'riel' }
+        ];
+        //bindings
+        this.ngmodel = '';
+        this.img = "https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=6e8162f9e3bff101da85d93ff1ab8f91&oe=5A1AFCB0";
+        //conditions
+        if (this.x == 10)
+            console.log("Condition\nTrue");
+        else
+            console.log("Condition\nFalse");
+        for (var _i = 0, _a = this.names; _i < _a.length; _i++) {
+            var n = _a[_i];
+            console.log(n + " < looping");
+        }
+    }
+    BasicsComponent.prototype.ngOnInit = function () {
+    };
+    //methods
+    BasicsComponent.prototype.withoutparameter = function () {
+        alert("too handsome for humanity");
+    };
+    BasicsComponent.prototype.withparameter = function (numb, stri) {
+        alert(numb + " " + stri);
+    };
+    BasicsComponent.prototype.brandom = function () {
+        this.basicrand = Math.random();
+        return this.basicrand;
+    };
+    BasicsComponent.prototype.arandom = function () {
+        this.advancerand = Math.random() * (1 * 100);
+        return this.advancerand;
+    };
+    //event
+    BasicsComponent.prototype.click = function () {
+        alert("Hello! Angular 4 - single click");
+    };
+    BasicsComponent.prototype.dbclick = function () {
+        alert("Hello! Angular 4 - double click");
+    };
+    return BasicsComponent;
+}());
+BasicsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-basics',
+        template: __webpack_require__("../../../../../src/app/basics/basics.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/basics/basics.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], BasicsComponent);
+
+var declaration = [
+    {
+        type: "String",
+        explaination: "Declaring str to string",
+        code: "str: string = 'this is string';",
+    }, {
+        type: "Number",
+        explaination: "Declaring num to number",
+        code: "num:number = 10;",
+    }, {
+        type: "Boolean",
+        explaination: "Declaring bol to boolean",
+        code: "bol:boolean = true;",
+    }
+];
+var condition = [
+    {
+        type: "If and Else statement ",
+        explaination: "Lets say *ngIf naka declare na kog x:number = 10; so atong i condition na if true naay True else False sa console log. And if napansin ninyu wala na ang {} after condition becase optional na siya.",
+        code: "if (this.x == 10) console.log('True');",
+        code2: "else console.log('False');",
+    }, {
+        type: "Basic *ngIf",
+        explaination: "Nag declare ko x:number=10. Then if existing si x mo prompt si found else kung wa pa na declare mo not found siya",
+        code: "<div *ngIf='x'>Found</div>",
+        code2: "<div *ngIf='!x'>Not found</div>",
+    }, {
+        type: "Advance *ngIf",
+        explaination: "Continuation sa basic *ngIf. Sa diri na part nag if else condition ta regarding nag gamit tag <ng-template> na directive.",
+        code: "<div *ngIf='x; then templateTrue else templateFalse'></div>",
+        code2: "<ng-template #templateTrue>Found</ng-template> <ng-template #templateFalse>Not Found</ng-template>",
+    }
+];
+var parsing = [
+    {
+        type: "Parsing String to Number",
+        explaination: "So far mao ni ang pinaka the best and easy way na conversion sa angularjs. By adding +.",
+        code: "parsex: string = '10';",
+        code2: "parsey: number = +this.parsex;",
+    },
+    {
+        type: "Parsing Number to String",
+        explaination: "Para ma parse number to string kailngan nato ang String() function na built in na daan.",
+        code: "parsex2: number = 10;",
+        code2: "parsey2: string = String(this.parsex2);",
+    }
+];
+var array = [
+    {
+        type: "Array of String",
+        explaination: "Creating a string array",
+        code: "names:string[] = ['kent','john','lloyd']",
+    },
+    {
+        type: "Array of Numbers",
+        explaination: "Creating a number array",
+        code: "nums:number[] = [1,2,3];",
+    }
+];
+var object = [
+    {
+        type: "Object",
+        explaination: "Creating object",
+        code: "named:object = { fname: 'kent', mname: 'dela cruz', lname: 'fueconcillo'};",
+    }
+];
+var objectarray = [
+    {
+        type: "Object Arrays",
+        explaination: "Creating object array",
+        code: "objarray: object[] = [{ fname: 'kent' }, { fname: 'daniel' }, { fname: 'riel' }];",
+    }
+];
+var loop = [
+    {
+        type: 'Basic looping using for not *ngFor',
+        explaination: 'Diri dapita kay basic looping inside component. Dili pa to diri mao parihas atong ng-repeat sa angular 1 ug *ngFor sa angular 2 / 4',
+        code: 'for (let n of this.names) { console.log(n + " < looping"); }',
+    }, {
+        type: 'Array Looping *ngFor',
+        explaination: 'Referring to array tutorial.',
+        code: '<ul class=""> <li *ngFor="let name of names"> {{name}} </li> </ul>',
+    }, {
+        type: 'Object Array Looping *ngFor',
+        explaination: 'Referring to Object Array tutorial.',
+        code: '<ul class=""> <li *ngFor="let objarr of objarray"> {{objarr.fname}} </li> </ul>',
+    }, {
+        type: 'Object Array Looping *ngFor and getting its index',
+        explaination: 'Referring to Object Array tutorial ug need kuhaon ang iyang index.',
+        code: '<ul class=""> <li *ngFor="let objarr of objarray;let in = index;"> {{in}} {{objarr.fname}} </li> </ul>',
+    }
+];
+var method = [
+    {
+        type: 'Basic method',
+        explaination: 'Basic method once mag click sa button. WARNING: regarding sa $events refer sa kani na link https://developer.mozilla.org/en-US/docs/Web/Events then Mouse Events',
+        code: '<button (click)="example()"> try me </button>',
+        code2: 'withoutparameter() { alert("too handsome for humanity"); }}',
+    }, {
+        type: 'Advance method',
+        explaination: 'Mao na ni na method na naa nay parameter. Keep in mind ang warning sa Basic Method Tutorial',
+        code: '<button (click)="example(10,"kent")">try me</button>',
+        code2: 'withparameter(numb:number, stri:string) { alert(numb + " " + stri); }',
+    }
+];
+var arithmetic = [
+    {
+        type: 'Arithmetic inside binding',
+        explaination: 'Basic arithmetic inside sa binding so far para sa akoa mao ni ang best way to do arithmetic operations',
+        code: '{{1 + 1}} , {{1 - 1}} , {{1 * 1}} , {{1 / 1}}'
+    }, {
+        type: 'Basic Math Random',
+        explaination: 'Kanang gusto ka mag generate ug random numbers',
+        code: 'this.rand:number=Math.random();'
+    }, {
+        type: 'Advance Math Random',
+        explaination: 'Kanang gusto ka mag generate ug random numbers pero naay limit ex. 1-100 . regarding kung aha makita tanan function here`s the link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random',
+        code: 'this.advancerand = Math.random() * (1 * 100);'
+    }
+];
+var databinding = [
+    {
+        type: "Two-way Data Binding",
+        explaination: "Data binding gamit ang ngModel sa angular 4. WARNING: i import sa ang library import { FormsModule, ReactiveFormsModule } from '@angular/forms'; then i butang ang FormsModule ug ReactiveFormsModule inside imports",
+        intantiation: "ngmodel: string = '';",
+        code: '<input type="text" class="" [(ngModel)]="ngmodel"> {{ngmodel}}'
+    }, {
+        type: "Property Binding",
+        explaination: "Daghay way para ma bind ang src sa image like [src], src='{{}}' ug bind-src='' pero mas prefer nako ang src='{{}}' old but gold.",
+        intantiation: "img: string = 'https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.0-9/19961222_1740052446022448_1520076539138365916_n.jpg?oh=6e8162f9e3bff101da85d93ff1ab8f91&oe=5A1AFCB0';",
+        code: '<img src="{{img}}" height="50" >'
+    }
+];
+var exported = [
+    {
+        type: "Interface",
+        explaination: "string",
+        code: "export interface exports { type: string; explaination: string; code: string; }"
+    }, {
+        type: "Class",
+        explaination: "string",
+        code: "export class exports { type: string; explaination: string; code: string; }"
+    }
+];
+var event = [
+    {
+        type: 'On Click',
+        explaination: 'On click event',
+        html: '<button (click)="click()"> On click event </button>',
+        code: "click(){ alert('Hello! Angular 4'); }"
+    }, {
+        type: 'Double click',
+        explaination: 'double click event',
+        html: '<button (dblclick)="dbclick()"> Double click event </button>',
+        code: "dbclick(){ alert('Hello! Angular 4'); }"
+    }
+];
+//# sourceMappingURL=basics.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/environments/environment.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+// The file contents for the current environment will overwrite these during build.
+var environment = {
+    production: false
+};
+//# sourceMappingURL=environment.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/main.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../src/app/app.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
+}
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("../../../../../src/main.ts");
+
+
+/***/ })
+
+},[1]);
+//# sourceMappingURL=main.bundle.js.map
