@@ -4,6 +4,7 @@ export interface declarations {
   type: string;
   explaination: string;
   code: string;
+  furtherexplaination1: string;
 }
 
 export interface conditions {
@@ -11,6 +12,7 @@ export interface conditions {
   explaination: string;
   code: string;
   code2: string;
+  furtherexplaination1: string;
 }
 
 export interface parsings {
@@ -42,13 +44,16 @@ export interface loops {
   type: string;
   explaination: string;
   code: string;
+  furtherexplaination1: string;
 }
 
-export interface methods {
+export interface functions {
   type: string;
   explaination: string;
   code: string;
+  furtherexplaination1: string;
   code2: string;
+  furtherexplaination2: string;
 }
 
 export interface arithmetics {
@@ -73,8 +78,10 @@ export interface exports {
 export interface events {
   type: string;
   explaination: string;
-  html:string;
+  html: string;
+  furtherexplaination1: string;
   code: string;
+  furtherexplaination2: string;
 }
 
 
@@ -93,7 +100,7 @@ export class BasicsComponent implements OnInit {
   Object = object;
   Objectarray = objectarray;
   Loops = loop;
-  Method = method;
+  Func = func;
   Arithmetic = arithmetic;
   Databinding = databinding;
   Export = exported;
@@ -172,13 +179,13 @@ export class BasicsComponent implements OnInit {
   }
 
   //event
-  click(){
+  click() {
     alert("Hello! Angular 4 - single click");
   }
-  dbclick(){
+  dbclick() {
     alert("Hello! Angular 4 - double click")
   }
-  
+
 }
 
 const declaration: declarations[] = [
@@ -186,33 +193,39 @@ const declaration: declarations[] = [
     type: "String",
     explaination: "Declaring str to string",
     code: "str: string = 'this is string';",
+    furtherexplaination1: 'Sa kani na instance gi global nato ang atong string para ma cast siya inside method for example like let samplestring = this.str;'
   }, {
     type: "Number",
     explaination: "Declaring num to number",
     code: "num:number = 10;",
+    furtherexplaination1: 'Sa kani na instance gi global nato ang atong number para ma cast siya inside method for example like let samplenumber = this.num;'
   }, {
     type: "Boolean",
     explaination: "Declaring bol to boolean",
     code: "bol:boolean = true;",
+    furtherexplaination1: 'Sa kani na instance gi global nato ang atong boolean para ma cast siya inside method for example like let sampleboolean = this.bol;'
   }
 ];
 
 const condition: conditions[] = [
   {
     type: "If and Else statement ",
-    explaination: "Lets say *ngIf naka declare na kog x:number = 10; so atong i condition na if true naay True else False sa console log. And if napansin ninyu wala na ang {} after condition becase optional na siya.",
+    explaination: "Lets say *ngIf naka declare na kog x:number = 10; so atong i condition na if true naay True else False sa console log. And if napansin ninyu wala na ang {} after condition kay optional na siya.",
     code: "if (this.x == 10) console.log('True');",
     code2: "else console.log('False');",
+    furtherexplaination1: 'Sa diri na way nag condition ta sulod sa atong component.'
   }, {
     type: "Basic *ngIf",
     explaination: "Nag declare ko x:number=10. Then if existing si x mo prompt si found else kung wa pa na declare mo not found siya",
     code: "<div *ngIf='x'>Found</div>",
     code2: "<div *ngIf='!x'>Not found</div>",
+    furtherexplaination1: 'Sa diri dapit nag template involve ta kay nag conditioning na ta mismo inside sa atong html'
   }, {
     type: "Advance *ngIf",
     explaination: "Continuation sa basic *ngIf. Sa diri na part nag if else condition ta regarding nag gamit tag <ng-template> na directive.",
     code: "<div *ngIf='x; then templateTrue else templateFalse'></div>",
     code2: "<ng-template #templateTrue>Found</ng-template> <ng-template #templateFalse>Not Found</ng-template>",
+    furtherexplaination1: 'Sa diri dapit nag template involve ta kay nag advance conditioning na ta mismo inside sa atong html na if true then template else template'
   }
 ];
 
@@ -265,32 +278,42 @@ const loop: loops[] = [
     type: 'Basic looping using for not *ngFor',
     explaination: 'Diri dapita kay basic looping inside component. Dili pa to diri mao parihas atong ng-repeat sa angular 1 ug *ngFor sa angular 2 / 4',
     code: 'for (let n of this.names) { console.log(n + " < looping"); }',
+    furtherexplaination1: 'Sa diri na part nag looping pa ta inside sa atong component.'
   }, {
     type: 'Array Looping *ngFor',
     explaination: 'Referring to array tutorial.',
     code: '<ul class=""> <li *ngFor="let name of names"> {{name}} </li> </ul>',
+    furtherexplaination1: 'Sa diri na part nag array looping na ta with template involved. '
   }, {
     type: 'Object Array Looping *ngFor',
     explaination: 'Referring to Object Array tutorial.',
     code: '<ul class=""> <li *ngFor="let objarr of objarray"> {{objarr.fname}} </li> </ul>',
+    furtherexplaination1: 'Sa diri na part nag object looping na ta with template involved '
   }, {
     type: 'Object Array Looping *ngFor and getting its index',
     explaination: 'Referring to Object Array tutorial ug need kuhaon ang iyang index.',
     code: '<ul class=""> <li *ngFor="let objarr of objarray;let in = index;"> {{in}} {{objarr.fname}} </li> </ul>',
+    furtherexplaination1: 'Sa diri na part nag Object Array looping na ta with template involved '
   }
 ];
 
-const method: methods[] = [
+const func: functions[] = [
   {
-    type: 'Basic method',
-    explaination: 'Basic method once mag click sa button. WARNING: regarding sa $events refer sa kani na link https://developer.mozilla.org/en-US/docs/Web/Events then Mouse Events',
+    type: 'Basic function',
+    explaination: 'Basic function once mag click sa button.',
     code: '<button (click)="example()"> try me </button>',
+    furtherexplaination1: 'Sa diri dapit nag buhat lang kog sample function with combination of click event',
     code2: 'withoutparameter() { alert("too handsome for humanity"); }}',
+    furtherexplaination2: 'after ana mo trigger si alert then mo display too handsome for humanity. '
+
   }, {
-    type: 'Advance method',
-    explaination: 'Mao na ni na method na naa nay parameter. Keep in mind ang warning sa Basic Method Tutorial',
+    type: 'Advance function',
+    explaination: 'Mao na ni na function na naa nay parameter.',
     code: '<button (click)="example(10,"kent")">try me</button>',
+    furtherexplaination1: 'Sa diri dapit nag buhat lang kog sample function with combination of click event',
     code2: 'withparameter(numb:number, stri:string) { alert(numb + " " + stri); }',
+    furtherexplaination2: 'sa diri na dapita is naa nay parameter which is number and string.'
+
   }
 ];
 
@@ -340,14 +363,18 @@ const exported: exports[] = [
 const event: events[] = [
   {
     type: 'On Click',
-    explaination:'On click event' ,
-    html:'<button (click)="click()"> On click event </button>',
-    code: "click(){ alert('Hello! Angular 4'); }"
-  },{
+    explaination: 'On click event',
+    html: '<button (click)="click()"> On click event </button>',
+    furtherexplaination1: 'Sa dri dapita sa atong html nag buhat sa kog button para mo trigger sa akong on click na event',
+    code: "click(){ alert('Hello! Angular 4'); }",
+    furtherexplaination2: 'Then sa akong function nag buhat sad kog sample alert para naa lay mo prompt once akong i press ang On click event',
+  }, {
     type: 'Double click',
-    explaination:'double click event' ,
-    html:'<button (dblclick)="dbclick()"> Double click event </button>',
-    code: "dbclick(){ alert('Hello! Angular 4'); }"
+    explaination: 'double click event',
+    html: '<button (dblclick)="dbclick()"> Double click event </button>',
+    furtherexplaination1: 'Sa dri dapita sa atong html nag buhat sa kog button para mo trigger sa akong double click na event',
+    code: "dbclick(){ alert('Hello! Angular 4'); }",
+    furtherexplaination2: 'Then sa akong function nag buhat sad kog sample alert para naa lay mo prompt once akong i press ang Double click event',
   }
 
 ];

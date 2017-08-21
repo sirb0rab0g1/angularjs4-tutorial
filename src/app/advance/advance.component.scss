@@ -1,8 +1,18 @@
-.httprequestget {
-  margin-top: 1em;
+.advance {
+  .httprequestget {
+    margin-top: 1em;
     margin-bottom: 1em;
     .p-class {
       margin-top: 10px;
       margin-bottom: 10px;
     }
+  }
+  .routes {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    .p-class {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }

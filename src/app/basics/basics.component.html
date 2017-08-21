@@ -10,7 +10,8 @@
             Code:
           </p>
           <md-card>
-            {{dec.code}}
+            {{dec.code}}<br>
+            <pre class="">{{dec.furtherexplaination1}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>{{str}}</md-toolbar>
@@ -36,7 +37,8 @@
             Code:
           </p>
           <md-card>
-            {{con.code}}<br> {{con.code2}}
+            {{con.code}}<br> {{con.code2}}<br>
+            <pre class="">{{con.furtherexplaination1}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>
@@ -143,7 +145,8 @@
             Code:
           </p>
           <md-card>
-            {{loop.code}}
+            {{loop.code}}<br>
+            <pre class="">{{loop.furtherexplaination1}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>
@@ -190,7 +193,9 @@
             Code:
           </p>
           <md-card>
-            {{evnt.html}}<br>{{evnt.code}}
+            {{evnt.html}}<br>
+            <pre class="">{{evnt.furtherexplaination1}}</pre>{{evnt.code}}<br>
+            <pre class="">{{evnt.furtherexplaination2}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>
@@ -209,16 +214,18 @@
 
     </div>
 
-    <div class="method">
-      <h1>Method</h1>
-      <p-accordion class="Method">
-        <p-accordionTab header="{{method.type}}" *ngFor="let method of Method;let index = index;">
-          <p class="">{{method.explaination}}</p>
+    <div class="function">
+      <h1>Function</h1>
+      <p-accordion class="function">
+        <p-accordionTab header="{{func.type}}" *ngFor="let func of Func;let index = index;">
+          <p class="">{{func.explaination}}</p>
           <p class="">
             Code:
           </p>
           <md-card>
-            {{method.code}} <br> {{method.code2}}
+            {{func.code}} <br>
+            <pre class="">{{func.furtherexplaination1}}</pre> {{func.code2}}
+            <pre class="">{{func.furtherexplaination2}}</pre> 
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>

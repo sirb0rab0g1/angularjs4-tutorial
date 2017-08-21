@@ -1,5 +1,6 @@
-<div class="ui-g" style="overflow-y:auto;">
+<div class="ui-g advance" style="overflow-y:auto;">
   <div class="ui-g-12 ui-md-12 ui-lg-12">
+
     <div class="httprequestget">
       <h1>Http Request</h1>
       <p-accordion class="Httprequestget">
@@ -9,16 +10,80 @@
             Code:
           </p>
           <md-card>
-            {{httpg.code}}<br> {{httpg.code2}}
+            {{httpg.code}}<br>
+            <pre class="">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>
+            <pre class="">{{httpg.furtherexplaination2}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index == 0">
               <md-card>
-                <button (click)="getData()" >Click me to view request</button>
+                <button (click)="getData()">Click me to view request</button>
                 <ul class="">
                   <li *ngFor="let x of results">
                     {{x.City}} {{x.Country}} {{x.Name}}
                   </li>
                 </ul>
+              </md-card>
+            </ng-template>
+            <ng-template [ngIf]="index == 1">
+              <md-toolbar>
+                <button (click)="putData()">Click me to send request</button>
+              </md-toolbar>
+            </ng-template>
+            <ng-template [ngIf]="index == 2">
+              <md-toolbar>
+                <button (click)="getTxt()">Click me to view json</button>
+              </md-toolbar>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="routes">
+      <h1>Routes</h1>
+      <p-accordion class="routes">
+        <p-accordionTab header="{{router.type}}" *ngFor="let router of Routes;let index = index;">
+          <p class="">{{router.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{router.code}}<br>
+            <pre class="">{{router.furtherexplaination1}}</pre> {{router.code2}}
+            <br>
+            <pre class="">{{router.furtherexplaination2}}</pre> {{router.code3}}
+            <br>
+            <pre class="">{{router.furtherexplaination3}}</pre>
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-card>
+                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu
+              </md-card>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="ngmodules">
+      <h1>NgModules</h1>
+      <p-accordion class="ngmodules">
+        <p-accordionTab header="{{ngmod.type}}" *ngFor="let ngmod of Ngmodules;let index = index;">
+          <p class="">{{ngmod.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{ngmod.code}}<br>
+            <pre class="">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}
+            <br>
+            <pre class="">{{ngmod.furtherexplaination2}}</pre>
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-card>
+                {{ngmod.soutput}}
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
