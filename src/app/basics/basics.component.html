@@ -23,11 +23,9 @@
               <md-toolbar>{{bol}}</md-toolbar>
             </ng-template>
           </md-card>
-          
+
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="condition">
@@ -63,8 +61,6 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="parse">
@@ -93,8 +89,6 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="array">
@@ -140,8 +134,6 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="loop">
@@ -187,14 +179,13 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="event">
       <h1>Event</h1>
       <md-toolbar>
-        <a href="https://developer.mozilla.org/en/docs/Web/Events/" mdTooltip="Follow this link for more information" mdTooltipPosition="below" class="">Referrences</a>
+        <a href="https://developer.mozilla.org/en/docs/Web/Events/" mdTooltip="Follow this link for more information" mdTooltipPosition="below"
+          class="">Referrences</a>
       </md-toolbar>
       <p-accordion class="Event">
         <p-accordionTab header="{{evnt.type}}" *ngFor="let evnt of Event;let index = index;">
@@ -221,8 +212,6 @@
 
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="function">
@@ -236,7 +225,7 @@
           <md-card>
             {{func.code}} <br>
             <pre class="">{{func.furtherexplaination1}}</pre> {{func.code2}}
-            <pre class="">{{func.furtherexplaination2}}</pre> 
+            <pre class="">{{func.furtherexplaination2}}</pre>
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index==0">
               <md-toolbar>
@@ -251,14 +240,13 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="arithmetic">
       <h1>Arithmetic</h1>
       <md-toolbar>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random" mdTooltip="Follow this link for more information" mdTooltipPosition="below" class="">Referrences</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random" mdTooltip="Follow this link for more information"
+          mdTooltipPosition="below" class="">Referrences</a>
       </md-toolbar>
       <p-accordion class="Arithmetic">
         <p-accordionTab header="{{ari.type}}" *ngFor="let ari of Arithmetic;let index = index">
@@ -287,8 +275,6 @@
           </md-card>
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="databinding">
@@ -316,8 +302,6 @@
 
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
     <div class="export">
@@ -334,10 +318,11 @@
 
         </p-accordionTab>
       </p-accordion>
-
-      <fb-comments></fb-comments>
     </div>
 
 
+
+
+    <fb-comments></fb-comments>
   </div>
 </div>
