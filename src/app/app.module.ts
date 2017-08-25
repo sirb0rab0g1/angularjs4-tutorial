@@ -29,6 +29,9 @@ import { AccordionModule, FieldsetModule } from 'primeng/primeng';
 //libraries
 import { PushNotificationComponent } from 'ng2-notifications/ng2-notifications';
 
+//facebook
+import { FacebookModule } from 'ngx-facebook';
+
 //router
 const appRoutes: Routes = [
   //{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -57,6 +60,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MdTooltipModule,
+    FacebookModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
