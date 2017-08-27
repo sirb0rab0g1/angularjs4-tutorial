@@ -16,7 +16,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /***/ "../../../../../src/app/advance/advance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button (click)=\"getData()\">Click me to view request</button>\n                <ul class=\"\">\n                  <li *ngFor=\"let x of results\">\n                    {{x.City}} {{x.Country}} {{x.Name}}\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-toolbar>\n                <button (click)=\"putData()\">Click me to send request</button>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-toolbar>\n                <button (click)=\"getTxt()\">Click me to view json</button>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-toolbar>\n                <button (click)=\"putData()\">Click me to send request</button>\n              </md-toolbar>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-toolbar>\n                <button (click)=\"getTxt()\">Click me to view json</button>\n              </md-toolbar>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    \n  </div>\n</div>\n"
+module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button (click)=\"getData()\">Click me to view request</button>\n                <ul class=\"\">\n                  <li *ngFor=\"let x of results\">\n                    {{x.City}} {{x.Country}} {{x.Name}}\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <button (click)=\"putData()\">Click me to send request</button>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"templating\">\n      <h1>Templating</h1>\n      <p-accordion class=\"templating\">\n        <p-accordionTab header=\"{{temp.type}}\" *ngFor=\"let temp of Template;let index = index;\">\n          <p class=\"\">{{temp.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{temp.code}}<br>\n            <pre class=\"\">{{temp.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"styling\">\n      <h1>Style</h1>\n      <p-accordion class=\"style\">\n        <p-accordionTab header=\"{{styl.type}}\" *ngFor=\"let styl of Style;let index = index;\">\n          <p class=\"\">{{styl.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{styl.code}}<br>\n            <pre class=\"\">{{styl.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -28,7 +28,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".advance .httprequestget {\n  margin-top: 1em;\n  margin-bottom: 1em; }\n  .advance .httprequestget .p-class {\n    margin-top: 10px;\n    margin-bottom: 10px; }\n\n.advance .routes {\n  margin-top: 1em;\n  margin-bottom: 1em; }\n  .advance .routes .p-class {\n    margin-top: 10px;\n    margin-bottom: 10px; }\n", ""]);
+exports.push([module.i, ".advance .httprequestget, .advance .routes, .advance .ngmodules, .advance .templating, .advance .styling {\n  margin-top: 1em;\n  margin-bottom: 1em; }\n  .advance .httprequestget .p-class, .advance .routes .p-class, .advance .ngmodules .p-class, .advance .templating .p-class, .advance .styling .p-class {\n    margin-top: 10px;\n    margin-bottom: 10px; }\n", ""]);
 
 // exports
 
@@ -62,6 +62,8 @@ var AdvanceComponent = (function () {
         this.Httprequestget = httprequest;
         this.Routes = route;
         this.Ngmodules = ngmodule;
+        this.Template = template;
+        this.Style = style;
         this.displayedColumns = ['userId', 'userName', 'progress', 'color'];
     }
     AdvanceComponent.prototype.ngOnInit = function () {
@@ -141,13 +143,59 @@ var route = [
 ];
 var ngmodule = [
     {
-        type: 'NgModule',
-        explaination: 'Kaning NgModule mura nig library declaration kung sa JAVA pa. Kay tungod ani diri nako i pang call ang mga classes inside sa library na akong gusto i tawag.',
+        type: 'Declarations',
+        explaination: 'Listahan sa component , directives, pipes na na belong sa kani na module',
+        code: 'declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,]',
+        furtherexplaination1: 'Regarding sa code above. Akong gipang tawag ang akong component ug isa ka directive na na belong sa akong module',
+        code2: '@NgModule({declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,]})',
+        furtherexplaination2: 'so ingon ani ang pag implement sa code above',
+        soutput: '@NgModule({ declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,], imports: [ .... ], providers: [], bootstrap: [AppComponent] })'
+    }, {
+        type: 'Imports',
+        explaination: 'Tanang module na gitawag nimo dapat nato i declate sa imports',
         code: 'import {MdButtonModule, MdCheckboxModule} from "@angular/material";',
         furtherexplaination1: 'sa kani na code gi tawag nako ang classes inside sa @angular/material',
         code2: '@NgModule({ imports: [MdButtonModule, MdCheckboxModule],})',
-        furtherexplaination2: 'sa code above ako nang gi declare ang class na MdButtonModule ug MdCheckboxModule para ma tawag na nako ang api sa akong system.',
-        soutput: '@NgModule({ declarations: [ .... ], imports: [ .... MdButtonModule, MdToolbarModule, .... ], providers: [], bootstrap: [AppComponent] })'
+        furtherexplaination2: 'sa code above ako nang gi declare ang class na MdButtonModule ug MdCheckboxModule para ma tawag na nako ang api sa akong module.',
+        soutput: '@NgModule({ declarations: [ .... ], imports: [ MdButtonModule, MdToolbarModule ], providers: [], bootstrap: [AppComponent] })'
+    }, {
+        type: 'Bootstrap',
+        explaination: 'Mao ni ang root element sa akong application',
+        code: 'bootstrap: [AppComponent]',
+        furtherexplaination1: 'akong gi butang ang root para ma bootstrap siya sa angular',
+        code2: '@NgModule({ bootstrap: [AppComponent] })',
+        furtherexplaination2: 'ingon ani pag implement sa code above',
+        soutput: '@NgModule({ declarations: [ .... ], imports: [ .... ], providers: [], bootstrap: [AppComponent] })'
+    }
+];
+var template = [
+    {
+        type: 'Inline template',
+        explaination: 'Template inside sa @component',
+        code: ' template: `<p>some template</p>`,',
+        furtherexplaination1: 'nag template ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
+        soutput: "@Component({ selector: 'app-root', template: `<p>some template</p>`, styleUrls: ['./app.component.scss'],})"
+    }, {
+        type: 'External template',
+        explaination: 'Template outside na sa @component',
+        code: "templateUrl: './app.component.html',",
+        furtherexplaination1: 'if na pansin ninyu nag lahi ang pag implement instead template nahimong templateUrl kay mao ni ang way para ma access ni angular ang external links',
+        soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
+    }
+];
+var style = [
+    {
+        type: 'Inline css / scss',
+        explaination: 'Style inside sa @component',
+        code: "styles: ['.primary {color: red}']",
+        furtherexplaination1: 'nag styles ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
+        soutput: "@Component({ selector: 'app-root', templateUrl: './app.component.html', styles: ['.primary {color: red}'], })"
+    }, {
+        type: 'External css / scss',
+        explaination: 'Style outside na sa @component',
+        code: "styleUrls: ['./app.component.scss'],",
+        furtherexplaination1: 'if na pansin ninyu nag lahi ang pag implement instead styles nahimong styleUrls kay mao ni ang way para ma access ni angular ang external stylesheet',
+        soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
     }
 ];
 var _a;
@@ -348,7 +396,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".basic {\n  overflow-y: auto; }\n  .basic .variable {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .variable .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .condition {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .condition .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .parse {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .parse .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .array {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n  .basic .object {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n  .basic .objectarray {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .objectarray .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .event {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .event .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .method {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .method .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .arithmetic {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .arithmetic .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .databinding {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .databinding .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .export {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .export .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n", ""]);
+exports.push([module.i, ".basic {\n  overflow-y: auto; }\n  .basic .variable {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .variable .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .condition, .basic .parse, .basic .objectarray, .basic .event, .basic .method, .basic .arithmetic, .basic .databinding, .basic .export {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n    .basic .condition .p-class, .basic .parse .p-class, .basic .objectarray .p-class, .basic .event .p-class, .basic .method .p-class, .basic .arithmetic .p-class, .basic .databinding .p-class, .basic .export .p-class {\n      margin-top: 10px;\n      margin-bottom: 10px; }\n  .basic .array {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n  .basic .object {\n    margin-top: 1em;\n    margin-bottom: 1em; }\n", ""]);
 
 // exports
 
