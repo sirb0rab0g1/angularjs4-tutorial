@@ -25,14 +25,7 @@
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
-              <md-toolbar>
-                <button (click)="putData()">Click me to send request</button>
-              </md-toolbar>
-            </ng-template>
-            <ng-template [ngIf]="index == 2">
-              <md-toolbar>
-                <button (click)="getTxt()">Click me to view json</button>
-              </md-toolbar>
+              <button (click)="putData()">Click me to send request</button>
             </ng-template>
           </md-card>
 
@@ -87,14 +80,9 @@
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
-              <md-toolbar>
-                <button (click)="putData()">Click me to send request</button>
-              </md-toolbar>
-            </ng-template>
-            <ng-template [ngIf]="index == 2">
-              <md-toolbar>
-                <button (click)="getTxt()">Click me to view json</button>
-              </md-toolbar>
+              <md-card>
+                {{ngmod.soutput}}
+              </md-card>
             </ng-template>
           </md-card>
 
@@ -102,6 +90,62 @@
       </p-accordion>
     </div>
 
-    
+    <div class="templating">
+      <h1>Templating</h1>
+      <p-accordion class="templating">
+        <p-accordionTab header="{{temp.type}}" *ngFor="let temp of Template;let index = index;">
+          <p class="">{{temp.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{temp.code}}<br>
+            <pre class="">{{temp.furtherexplaination1}}</pre>
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-card>
+                {{temp.soutput}}
+              </md-card>
+            </ng-template>
+            <ng-template [ngIf]="index == 1">
+              <md-card>
+                {{temp.soutput}}
+              </md-card>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="styling">
+      <h1>Style</h1>
+      <p-accordion class="style">
+        <p-accordionTab header="{{styl.type}}" *ngFor="let styl of Style;let index = index;">
+          <p class="">{{styl.explaination}}</p>
+          <p class="">
+            Code:
+          </p>
+          <md-card>
+            {{styl.code}}<br>
+            <pre class="">{{styl.furtherexplaination1}}</pre>
+            <p class="p-class">Output</p>
+            <ng-template [ngIf]="index == 0">
+              <md-card>
+                {{styl.soutput}}
+              </md-card>
+            </ng-template>
+            <ng-template [ngIf]="index == 1">
+              <md-card>
+                {{styl.soutput}}
+              </md-card>
+            </ng-template>
+          </md-card>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+
   </div>
 </div>

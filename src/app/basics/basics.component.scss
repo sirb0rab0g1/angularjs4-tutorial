@@ -8,15 +8,7 @@
       margin-bottom: 10px;
     }
   }
-  .condition {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .parse {
+  .condition, .parse, .objectarray, .event, .method, .arithmetic, .databinding, .export{
     margin-top: 1em;
     margin-bottom: 1em;
     .p-class {
@@ -31,53 +23,5 @@
   .object {
     margin-top: 1em;
     margin-bottom: 1em;
-  }
-  .objectarray {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .event {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .method {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .arithmetic {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .databinding {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-  .export {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    .p-class {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
   }
 }

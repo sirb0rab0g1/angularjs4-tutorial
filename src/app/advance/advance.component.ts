@@ -6,9 +6,9 @@ export interface httprequests {
   type: string;
   explaination: string;
   code: string;
-  furtherexplaination1:string;
+  furtherexplaination1: string;
   code2: string;
-  furtherexplaination2:string;
+  furtherexplaination2: string;
 }
 
 export interface routes {
@@ -32,6 +32,22 @@ export interface ngmodules {
   soutput: string;
 }
 
+export interface templates {
+  type: string;
+  explaination: string;
+  code: string;
+  furtherexplaination1: string;
+  soutput: string;
+}
+
+export interface styles{
+  type: string;
+  explaination: string;
+  code: string;
+  furtherexplaination1: string;
+  soutput: string;
+}
+
 @Component({
   selector: 'app-advance',
   templateUrl: './advance.component.html',
@@ -41,6 +57,8 @@ export class AdvanceComponent implements OnInit {
   Httprequestget = httprequest;
   Routes = route;
   Ngmodules = ngmodule;
+  Template = template;
+  Style = style;
   //http
   results: string[];
   displayedColumns = ['userId', 'userName', 'progress', 'color'];
@@ -92,16 +110,16 @@ const httprequest: httprequests[] = [
     type: 'Http Request Get',
     explaination: 'Una sa lahat i import sa nato ang library and i butang where in aha na locate imung component. Ibutang ni na library import { HttpClient, HttpErrorResponse } from "@angular/common/http";.And gusto nako naay live na api so sa w3schools nako kuhaon https://www.w3schools.com/angular/customers.php',
     code: 'constructor(private http: HttpClient) {}',
-    furtherexplaination1:'Sa kani na code kay gi private ang HttpCient. Pwede ra sad mag pubic pero ma prefer nako ang private',
+    furtherexplaination1: 'Sa kani na code kay gi private ang HttpCient. Pwede ra sad mag pubic pero ma prefer nako ang private',
     code2: "this.http.get('https://www.w3schools.com/angular/customers.php').subscribe(data => { this.results = data['records']; console.log(this.results); })",
-    furtherexplaination2:'Mao ni akong ginagamit na code para matawag ang api. And gina anad sad nako na kung kuhaon is GET and kung mag hatag is POST.'
+    furtherexplaination2: 'Mao ni akong ginagamit na code para matawag ang api. And gina anad sad nako na kung kuhaon is GET and kung mag hatag is POST.'
   }, {
     type: 'Http Request Post',
     explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data. WARNING di mo dawat si w3schools ug POST data due sa ilang restrictions.',
     code: "let urlSearchParams = new URLSearchParams(); urlSearchParams.append('username', username); urlSearchParams.append('password', password); let body = urlSearchParams.toString();",
-    furtherexplaination1:'Sa kani na code ako sang gi pang declare tanan after ana i cast nako tanan sa string para matawag sa akong body kay ang body kay mo dawat lang ug string sa akong na hibal.an',
+    furtherexplaination1: 'Sa kani na code ako sang gi pang declare tanan after ana i cast nako tanan sa string para matawag sa akong body kay ang body kay mo dawat lang ug string sa akong na hibal.an',
     code2: "this.http.post('https://www.w3schools.com/angular/customers.php', body, { headers: new HttpHeaders().set('Content-Type', 'application/json'), }) .subscribe( . . . );",
-    furtherexplaination2:'after ana ako nang i post ang body gamit ang http.post then i set ang headers sa certain type which is sa akong gi gamit karun kay json after ana ang subscribe kay pwede nimo i condition like sucess and error.'
+    furtherexplaination2: 'after ana ako nang i post ang body gamit ang http.post then i set ang headers sa certain type which is sa akong gi gamit karun kay json after ana ang subscribe kay pwede nimo i condition like sucess and error.'
   }
 ];
 
@@ -120,13 +138,61 @@ const route: routes[] = [
 
 const ngmodule: ngmodules[] = [
   {
-    type: 'NgModule',
-    explaination: 'Kaning NgModule mura nig library declaration kung sa JAVA pa. Kay tungod ani diri nako i pang call ang mga classes inside sa library na akong gusto i tawag.',
+    type: 'Declarations',
+    explaination: 'Listahan sa component , directives, pipes na na belong sa kani na module',
+    code: 'declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,]',
+    furtherexplaination1: 'Regarding sa code above. Akong gipang tawag ang akong component ug isa ka directive na na belong sa akong module',
+    code2: '@NgModule({declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,]})',
+    furtherexplaination2: 'so ingon ani ang pag implement sa code above',
+    soutput: '@NgModule({ declarations: [AppComponent,BasicsComponent,AdvanceComponent,PushNotificationComponent,], imports: [ .... ], providers: [], bootstrap: [AppComponent] })'
+  }, {
+    type: 'Imports',
+    explaination: 'Tanang module na gitawag nimo dapat nato i declate sa imports',
     code: 'import {MdButtonModule, MdCheckboxModule} from "@angular/material";',
     furtherexplaination1: 'sa kani na code gi tawag nako ang classes inside sa @angular/material',
     code2: '@NgModule({ imports: [MdButtonModule, MdCheckboxModule],})',
-    furtherexplaination2: 'sa code above ako nang gi declare ang class na MdButtonModule ug MdCheckboxModule para ma tawag na nako ang api sa akong system.',
-    soutput: '@NgModule({ declarations: [ .... ], imports: [ .... MdButtonModule, MdToolbarModule, .... ], providers: [], bootstrap: [AppComponent] })'
+    furtherexplaination2: 'sa code above ako nang gi declare ang class na MdButtonModule ug MdCheckboxModule para ma tawag na nako ang api sa akong module.',
+    soutput: '@NgModule({ declarations: [ .... ], imports: [ MdButtonModule, MdToolbarModule ], providers: [], bootstrap: [AppComponent] })'
+  }, {
+    type: 'Bootstrap',
+    explaination: 'Mao ni ang root element sa akong application',
+    code: 'bootstrap: [AppComponent]',
+    furtherexplaination1: 'akong gi butang ang root para ma bootstrap siya sa angular',
+    code2: '@NgModule({ bootstrap: [AppComponent] })',
+    furtherexplaination2: 'ingon ani pag implement sa code above',
+    soutput: '@NgModule({ declarations: [ .... ], imports: [ .... ], providers: [], bootstrap: [AppComponent] })'
+  }
+];
+
+const template: templates[] = [
+  {
+    type: 'Inline template',
+    explaination: 'Template inside sa @component',
+    code: ' template: `<p>some template</p>`,',
+    furtherexplaination1: 'nag template ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
+    soutput: "@Component({ selector: 'app-root', template: `<p>some template</p>`, styleUrls: ['./app.component.scss'],})"
+  },{
+    type: 'External template',
+    explaination: 'Template outside na sa @component',
+    code: "templateUrl: './app.component.html',",
+    furtherexplaination1: 'if na pansin ninyu nag lahi ang pag implement instead template nahimong templateUrl kay mao ni ang way para ma access ni angular ang external links',
+    soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
+  }
+];
+
+const style: styles[] = [
+  {
+    type: 'Inline css / scss',
+    explaination: 'Style inside sa @component',
+    code: "styles: ['.primary {color: red}']",
+    furtherexplaination1: 'nag styles ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
+    soutput: "@Component({ selector: 'app-root', templateUrl: './app.component.html', styles: ['.primary {color: red}'], })"
+  },{
+    type: 'External css / scss',
+    explaination: 'Style outside na sa @component',
+    code: "styleUrls: ['./app.component.scss'],",
+    furtherexplaination1: 'if na pansin ninyu nag lahi ang pag implement instead styles nahimong styleUrls kay mao ni ang way para ma access ni angular ang external stylesheet',
+    soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
   }
 ];
 
