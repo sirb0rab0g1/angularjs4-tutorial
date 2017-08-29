@@ -70,8 +70,9 @@ export class AdvanceComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('https://www.w3schools.com/angular/customers.php', ).subscribe(data => {
-      this.results = data['records'];
+    this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
+      //this.http.get('http://localhost:8000/credentials/?format=json', ).subscribe(data => {
+      this.results = data['results'];
       console.log(this.results);
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
