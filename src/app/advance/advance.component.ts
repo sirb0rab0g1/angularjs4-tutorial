@@ -69,8 +69,8 @@ export class AdvanceComponent implements OnInit {
   }
 
   getData() {
-    //this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
-    this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
+    this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
+    //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
       this.results = data['results'];
       console.log(this.results);
     }), (err: HttpErrorResponse) => {
@@ -85,8 +85,8 @@ export class AdvanceComponent implements OnInit {
   putData(fname:string, lname:string, loc:string, message: string, action: string) {
     let body = { first_name: fname, last_name: lname, location: loc };
     this.http
-      //.post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
-      .post('http://localhost:8000/credentials/?format=api', body, {
+      .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+      //.post('http://localhost:8000/credentials/?format=api', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
         // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
       })
