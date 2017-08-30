@@ -19,12 +19,11 @@ import {
   MdToolbarModule,
   MdTooltipModule,
   MdInputModule,
-  MdSnackBarModule
+  MdSnackBarModule,
 } from '@angular/material';
 
 //prime faces
 import { AccordionModule, FieldsetModule } from 'primeng/primeng';
-
 
 //rxjs
 import 'rxjs/add/operator/retry';
@@ -65,7 +64,7 @@ const appRoutes: Routes = [
     MdTooltipModule,
     FacebookModule.forRoot(),
     MdInputModule,
-    MdSnackBarModule
+    MdSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

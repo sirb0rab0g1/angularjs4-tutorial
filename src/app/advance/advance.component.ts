@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MdSnackBar } from '@angular/material';
-
 export interface httprequests {
   type: string;
   explaination: string;
@@ -70,8 +69,8 @@ export class AdvanceComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
-    //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
+    //this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
+    this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
       this.results = data['results'];
       console.log(this.results);
     }), (err: HttpErrorResponse) => {
@@ -86,7 +85,8 @@ export class AdvanceComponent implements OnInit {
   putData(fname:string, lname:string, loc:string, message: string, action: string) {
     let body = { first_name: fname, last_name: lname, location: loc };
     this.http
-      .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+      //.post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+      .post('http://localhost:8000/credentials/?format=api', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
         // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
       })
@@ -112,14 +112,14 @@ const httprequest: httprequests[] = [
     explaination: 'Una sa lahat i import sa nato ang library and i butang where in aha na locate imung component. Ibutang ni na library import { HttpClient, HttpErrorResponse } from "@angular/common/http";.And gusto nako naay live na api so sa w3schools nako kuhaon https://www.w3schools.com/angular/customers.php',
     code: 'constructor(private http: HttpClient) {}',
     furtherexplaination1: 'Sa kani na code kay gi private ang HttpCient. Pwede ra sad mag pubic pero ma prefer nako ang private',
-    code2: "this.http.get('https://www.w3schools.com/angular/customers.php').subscribe(data => { this.results = data['records']; console.log(this.results); })",
+    code2: "this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json').subscribe(data => { this.results = data['records']; console.log(this.results); })",
     furtherexplaination2: 'Mao ni akong ginagamit na code para matawag ang api. And gina anad sad nako na kung kuhaon is GET and kung mag hatag is POST.'
   }, {
     type: 'Http Request Post',
-    explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data. WARNING di mo dawat si w3schools ug POST data due sa ilang restrictions.',
-    code: "let urlSearchParams = new URLSearchParams(); urlSearchParams.append('username', username); urlSearchParams.append('password', password); let body = urlSearchParams.toString();",
+    explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data',
+    code: "let body = { first_name: fname, last_name: lname, location: loc };",
     furtherexplaination1: 'Sa kani na code ako sang gi pang declare tanan after ana i cast nako tanan sa string para matawag sa akong body kay ang body kay mo dawat lang ug string sa akong na hibal.an',
-    code2: "this.http.post('https://www.w3schools.com/angular/customers.php', body, { headers: new HttpHeaders().set('Content-Type', 'application/json'), }) .subscribe( . . . );",
+    code2: "this.http.post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, { headers: new HttpHeaders().set('Content-Type', 'application/json'), }) .subscribe( . . . );",
     furtherexplaination2: 'after ana ako nang i post ang body gamit ang http.post then i set ang headers sa certain type which is sa akong gi gamit karun kay json after ana ang subscribe kay pwede nimo i condition like sucess and error.'
   }
 ];

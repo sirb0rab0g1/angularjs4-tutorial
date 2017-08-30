@@ -25,11 +25,11 @@
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
-              <input type="text" name="" id="" [(ngModel)]="fname">
-              <input type="text" name="" id="" [(ngModel)]="lname">
-              <input type="text" name="" id="" [(ngModel)]="loc"><br>
+              <input type="text" name="" id="" [(ngModel)]="fname" placeholder="First name">
+              <input type="text" name="" id="" [(ngModel)]="lname" placeholder="Last name">
+              <input type="text" name="" id="" [(ngModel)]="loc"  placeholder="Location"><br>
               {{fname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
-              <button md-button (click)="putData(fname,lname,loc,'Data stored ','Close')">Click me to send request</button>
+              <button md-raised-button (click)="putData(fname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
           </md-card>
 
