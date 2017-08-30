@@ -16,7 +16,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /***/ "../../../../../src/app/advance/advance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button (click)=\"getData()\">Click me to view request</button>\n                <ul class=\"\">\n                  <li *ngFor=\"let x of results\">\n                    {{x.first_name}} {{x.last_name}} {{x.location}}\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <button (click)=\"putData()\">Click me to send request</button>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"templating\">\n      <h1>Templating</h1>\n      <p-accordion class=\"templating\">\n        <p-accordionTab header=\"{{temp.type}}\" *ngFor=\"let temp of Template;let index = index;\">\n          <p class=\"\">{{temp.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{temp.code}}<br>\n            <pre class=\"\">{{temp.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"styling\">\n      <h1>Style</h1>\n      <p-accordion class=\"style\">\n        <p-accordionTab header=\"{{styl.type}}\" *ngFor=\"let styl of Style;let index = index;\">\n          <p class=\"\">{{styl.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{styl.code}}<br>\n            <pre class=\"\">{{styl.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button (click)=\"getData()\">Click me to view request</button>\n                <ul class=\"\">\n                  <li *ngFor=\"let x of results\">\n                    {{x.first_name}} {{x.last_name}} {{x.location}}\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"fname\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"lname\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"loc\"><br>\n              {{fname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>\n              <button md-button (click)=\"putData(fname,lname,loc,'Data stored ','Close')\">Click me to send request</button>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"templating\">\n      <h1>Templating</h1>\n      <p-accordion class=\"templating\">\n        <p-accordionTab header=\"{{temp.type}}\" *ngFor=\"let temp of Template;let index = index;\">\n          <p class=\"\">{{temp.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{temp.code}}<br>\n            <pre class=\"\">{{temp.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"styling\">\n      <h1>Style</h1>\n      <p-accordion class=\"style\">\n        <p-accordionTab header=\"{{styl.type}}\" *ngFor=\"let styl of Style;let index = index;\">\n          <p class=\"\">{{styl.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{styl.code}}<br>\n            <pre class=\"\">{{styl.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -44,6 +44,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdvanceComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56,9 +57,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AdvanceComponent = (function () {
-    function AdvanceComponent(http) {
+    function AdvanceComponent(http, snackBar) {
         this.http = http;
+        this.snackBar = snackBar;
         this.Httprequestget = httprequest;
         this.Routes = route;
         this.Ngmodules = ngmodule;
@@ -71,7 +74,7 @@ var AdvanceComponent = (function () {
     AdvanceComponent.prototype.getData = function () {
         var _this = this;
         this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json').subscribe(function (data) {
-            //this.http.get('http://localhost:8000/credentials/?format=json', ).subscribe(data => {
+            //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
             _this.results = data['results'];
             console.log(_this.results);
         }), function (err) {
@@ -83,18 +86,18 @@ var AdvanceComponent = (function () {
             }
         };
     };
-    AdvanceComponent.prototype.putData = function (username, password) {
-        var urlSearchParams = new URLSearchParams();
-        urlSearchParams.append('username', username);
-        urlSearchParams.append('password', password);
-        var body = urlSearchParams.toString();
+    AdvanceComponent.prototype.putData = function (fname, lname, loc, message, action) {
+        var _this = this;
+        var body = { first_name: fname, last_name: lname, location: loc };
         this.http
-            .post('https://www.w3schools.com/angular/customers.php', body, {
-            // headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
-            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/x-www-form-urlencoded'),
+            .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
+            .retry(3)
             .subscribe(function (data) {
-            alert('naka connect ta sa w3schools GREAT');
+            _this.snackBar.open(message, action, {
+                duration: 3000,
+            });
         }, function (error) {
             console.log(JSON.stringify(error.json()));
         });
@@ -110,7 +113,7 @@ AdvanceComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/advance/advance.component.html"),
         styles: [__webpack_require__("../../../../../src/app/advance/advance.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MdSnackBar */]) === "function" && _b || Object])
 ], AdvanceComponent);
 
 var httprequest = [
@@ -199,7 +202,7 @@ var style = [
         soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
     }
 ];
-var _a;
+var _a, _b;
 //# sourceMappingURL=advance.component.js.map
 
 /***/ }),
@@ -308,9 +311,11 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__ = __webpack_require__("../../../../ng2-notifications/ng2-notifications.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ngx_facebook__ = __webpack_require__("../../../../ngx-facebook/dist/esm/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_add_operator_retry__ = __webpack_require__("../../../../rxjs/add/operator/retry.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_add_operator_retry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_add_operator_retry__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng2_notifications_ng2_notifications__ = __webpack_require__("../../../../ng2-notifications/ng2-notifications.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng2_notifications_ng2_notifications___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_ng2_notifications_ng2_notifications__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ngx_facebook__ = __webpack_require__("../../../../ngx-facebook/dist/esm/index.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -333,7 +338,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 //prime faces
 
-//ngx-bootstrap
+//rxjs
+
 //libraries
 
 //facebook
@@ -355,7 +361,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__basics_basics_component__["a" /* BasicsComponent */],
             __WEBPACK_IMPORTED_MODULE_7__advance_advance_component__["a" /* AdvanceComponent */],
-            __WEBPACK_IMPORTED_MODULE_12_ng2_notifications_ng2_notifications__["PushNotificationComponent"],
+            __WEBPACK_IMPORTED_MODULE_13_ng2_notifications_ng2_notifications__["PushNotificationComponent"],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -371,7 +377,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClientModule */],
             __WEBPACK_IMPORTED_MODULE_10__angular_material__["e" /* MdTooltipModule */],
-            __WEBPACK_IMPORTED_MODULE_13_ngx_facebook__["a" /* FacebookModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_14_ngx_facebook__["a" /* FacebookModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["f" /* MdInputModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["g" /* MdSnackBarModule */]
         ],
         providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
