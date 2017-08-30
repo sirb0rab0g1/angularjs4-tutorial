@@ -73,8 +73,8 @@ var AdvanceComponent = (function () {
     };
     AdvanceComponent.prototype.getData = function () {
         var _this = this;
-        //this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
-        this.http.get('http://localhost:8000/credentials/?format=json').retry(3).subscribe(function (data) {
+        this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json').subscribe(function (data) {
+            //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
             _this.results = data['results'];
             console.log(_this.results);
         }), function (err) {
@@ -90,7 +90,8 @@ var AdvanceComponent = (function () {
         var _this = this;
         var body = { first_name: fname, last_name: lname, location: loc };
         this.http
-            .post('http://localhost:8000/credentials/?format=api', body, {
+            .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+            //.post('http://localhost:8000/credentials/?format=api', body, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
             .retry(3)
