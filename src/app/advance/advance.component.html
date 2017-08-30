@@ -25,7 +25,11 @@
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
-              <button (click)="putData()">Click me to send request</button>
+              <input type="text" name="" id="" [(ngModel)]="fname">
+              <input type="text" name="" id="" [(ngModel)]="lname">
+              <input type="text" name="" id="" [(ngModel)]="loc"><br>
+              {{fname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
+              <button md-button (click)="putData(fname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
           </md-card>
 

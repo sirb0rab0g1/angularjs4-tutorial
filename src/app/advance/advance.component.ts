@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-
+import { MdSnackBar } from '@angular/material';
 
 export interface httprequests {
   type: string;
@@ -40,7 +40,7 @@ export interface templates {
   soutput: string;
 }
 
-export interface styles{
+export interface styles {
   type: string;
   explaination: string;
   code: string;
@@ -63,7 +63,7 @@ export class AdvanceComponent implements OnInit {
   results: string[];
   displayedColumns = ['userId', 'userName', 'progress', 'color'];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public snackBar: MdSnackBar) { }
 
   ngOnInit() {
 
@@ -71,7 +71,7 @@ export class AdvanceComponent implements OnInit {
 
   getData() {
     this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
-      //this.http.get('http://localhost:8000/credentials/?format=json', ).subscribe(data => {
+    //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
       this.results = data['results'];
       console.log(this.results);
     }), (err: HttpErrorResponse) => {
@@ -83,18 +83,18 @@ export class AdvanceComponent implements OnInit {
     };
   }
 
-  putData(username, password) {
-    let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('username', username);
-    urlSearchParams.append('password', password);
-    let body = urlSearchParams.toString();
+  putData(fname:string, lname:string, loc:string, message: string, action: string) {
+    let body = { first_name: fname, last_name: lname, location: loc };
     this.http
-      .post('https://www.w3schools.com/angular/customers.php', body, {
-        // headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
-        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
+      .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
+        // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
       })
+      .retry(3)
       .subscribe(data => {
-        alert('naka connect ta sa w3schools GREAT');
+        this.snackBar.open(message, action, {
+          duration: 3000,
+        });
       }, error => {
         console.log(JSON.stringify(error.json()));
       }
@@ -172,7 +172,7 @@ const template: templates[] = [
     code: ' template: `<p>some template</p>`,',
     furtherexplaination1: 'nag template ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
     soutput: "@Component({ selector: 'app-root', template: `<p>some template</p>`, styleUrls: ['./app.component.scss'],})"
-  },{
+  }, {
     type: 'External template',
     explaination: 'Template outside na sa @component',
     code: "templateUrl: './app.component.html',",
@@ -188,7 +188,7 @@ const style: styles[] = [
     code: "styles: ['.primary {color: red}']",
     furtherexplaination1: 'nag styles ko sulod sa akong @component and instead "" the way gamiton siya is ` ` ',
     soutput: "@Component({ selector: 'app-root', templateUrl: './app.component.html', styles: ['.primary {color: red}'], })"
-  },{
+  }, {
     type: 'External css / scss',
     explaination: 'Style outside na sa @component',
     code: "styleUrls: ['./app.component.scss'],",

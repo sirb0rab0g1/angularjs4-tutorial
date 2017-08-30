@@ -17,14 +17,17 @@ import {
   MdCardModule,
   MdButtonModule,
   MdToolbarModule,
-  MdTooltipModule
+  MdTooltipModule,
+  MdInputModule,
+  MdSnackBarModule
 } from '@angular/material';
 
 //prime faces
 import { AccordionModule, FieldsetModule } from 'primeng/primeng';
 
 
-//ngx-bootstrap
+//rxjs
+import 'rxjs/add/operator/retry';
 
 //libraries
 import { PushNotificationComponent } from 'ng2-notifications/ng2-notifications';
@@ -61,6 +64,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     MdTooltipModule,
     FacebookModule.forRoot(),
+    MdInputModule,
+    MdSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
