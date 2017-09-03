@@ -16,20 +16,27 @@
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index == 0">
               <md-card>
-                <button (click)="getData()">Click me to view request</button>
-                <ul class="">
-                  <li *ngFor="let x of results">
-                    {{x.first_name}} {{x.last_name}} {{x.location}}
+                <button md-raised-button (click)="getData()">Click me to view request</button>
+                <ul class="ul-margin">
+                  <li *ngFor="let x of getDataObject">
+                    
+                    <input type="text" class="" [(ngModel)]="x.first_name">
+                    <input type="text" class="" [(ngModel)]="x.middle_name">
+                    <input type="text" class="" [(ngModel)]="x.last_name">
+                    <input type="text" class="" [(ngModel)]="x.location"> 
+                    <button md-raised-button (click)="removeData(x.id)">remove</button> 
+                    <button md-raised-button (click)="updateData(x.id)">update</button> 
                   </li>
                 </ul>
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
               <input type="text" name="" id="" [(ngModel)]="fname" placeholder="First name">
+              <input type="text" name="" id="" [(ngModel)]="mname" placeholder="Middle name">
               <input type="text" name="" id="" [(ngModel)]="lname" placeholder="Last name">
               <input type="text" name="" id="" [(ngModel)]="loc"  placeholder="Location"><br>
-              {{fname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
-              <button md-raised-button (click)="putData(fname,lname,loc,'Data stored ','Close')">Click me to send request</button>
+              {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
+              <button md-raised-button (click)="putData(fname,mname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
           </md-card>
 

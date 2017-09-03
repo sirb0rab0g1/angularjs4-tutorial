@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MdSnackBar } from '@angular/material';
+import { RequestOptionsArgs } from '@angular/http';
+
 export interface httprequests {
   type: string;
   explaination: string;
@@ -67,12 +69,11 @@ export class AdvanceComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  getDataObject: object;
   getData() {
-    this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json', ).subscribe(data => {
-    //this.http.get('http://localhost:8000/credentials/?format=json', ).retry(3).subscribe(data => {
-      this.results = data['results'];
-      console.log(this.results);
+    this.http.get('https://my-rest-api-postgre.herokuapp.com/information-list/', ).subscribe(data => {
+    //this.http.get('http://127.0.0.1:8000/information-list/', ).retry(3).subscribe(data => {
+      this.getDataObject = data;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);
@@ -82,11 +83,11 @@ export class AdvanceComponent implements OnInit {
     };
   }
 
-  putData(fname:string, lname:string, loc:string, message: string, action: string) {
-    let body = { first_name: fname, last_name: lname, location: loc };
+  putData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
-      .post('https://my-sample-rest-api.herokuapp.com/credentials/?format=api', body, {
-      //.post('http://localhost:8000/credentials/?format=api', body, {
+      .post('https://my-rest-api-postgre.herokuapp.com/information-list/', body, {
+      //.post('http://127.0.0.1:8000/information-list/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
         // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
       })
@@ -100,6 +101,30 @@ export class AdvanceComponent implements OnInit {
       }
       );
   }
+  removeDataObject: object;
+  removeData(id: string) {
+    let pk = id;
+    
+    let options: any = {}
+    options.header = new Headers({
+      'Content-Type': 'application/json'
+    });
+    
+    this.http.delete("https://my-rest-api-postgre.herokuapp.com/information-request/" + pk, options).subscribe(data => {
+    console.log('DELETED');
+    }), (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log('An error occurred:', err.error.message);
+      } else {
+        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+      }
+    }
+
+  }
+
+  updateData(id: number) {
+    console.log(id + " this will be updated");
+  }
 
   getTxt() {
     alert("coming soon . . . ");
@@ -108,14 +133,14 @@ export class AdvanceComponent implements OnInit {
 
 const httprequest: httprequests[] = [
   {
-    type: 'Http Request Get',
+    type: 'Http Request Get / Put / Delete',
     explaination: 'Una sa lahat i import sa nato ang library and i butang where in aha na locate imung component. Ibutang ni na library import { HttpClient, HttpErrorResponse } from "@angular/common/http";.And gusto nako naay live na api so sa w3schools nako kuhaon https://www.w3schools.com/angular/customers.php',
     code: 'constructor(private http: HttpClient) {}',
     furtherexplaination1: 'Sa kani na code kay gi private ang HttpCient. Pwede ra sad mag pubic pero ma prefer nako ang private',
     code2: "this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json').subscribe(data => { this.results = data['records']; console.log(this.results); })",
     furtherexplaination2: 'Mao ni akong ginagamit na code para matawag ang api. And gina anad sad nako na kung kuhaon is GET and kung mag hatag is POST.'
   }, {
-    type: 'Http Request Post',
+    type: 'Http Request Post ',
     explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data',
     code: "let body = { first_name: fname, last_name: lname, location: loc };",
     furtherexplaination1: 'Sa kani na code ako sang gi pang declare tanan after ana i cast nako tanan sa string para matawag sa akong body kay ang body kay mo dawat lang ug string sa akong na hibal.an',
