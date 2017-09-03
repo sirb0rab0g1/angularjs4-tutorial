@@ -72,7 +72,7 @@ export class AdvanceComponent implements OnInit {
   getDataObject: object;
   getData() {
     this.http.get('https://my-rest-api-postgre.herokuapp.com/information-list/', ).subscribe(data => {
-    //this.http.get('http://127.0.0.1:8000/information-list/', ).retry(3).subscribe(data => {
+      //this.http.get('http://127.0.0.1:8000/information-list/', ).retry(3).subscribe(data => {
       this.getDataObject = data;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -87,7 +87,7 @@ export class AdvanceComponent implements OnInit {
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
       .post('https://my-rest-api-postgre.herokuapp.com/information-list/', body, {
-      //.post('http://127.0.0.1:8000/information-list/', body, {
+        //.post('http://127.0.0.1:8000/information-list/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
         // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
       })
@@ -102,16 +102,18 @@ export class AdvanceComponent implements OnInit {
       );
   }
   removeDataObject: object;
-  removeData(id: string) {
+  removeData(id: string, message: string, action: string) {
     let pk = id;
-    
+
     let options: any = {}
     options.header = new Headers({
       'Content-Type': 'application/json'
     });
-    
+
     this.http.delete("https://my-rest-api-postgre.herokuapp.com/information-request/" + pk, options).subscribe(data => {
-    console.log('DELETED');
+      this.snackBar.open(message, action, {
+        duration: 3000,
+      });
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);

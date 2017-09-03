@@ -24,7 +24,7 @@
                     <input type="text" class="" [(ngModel)]="x.middle_name">
                     <input type="text" class="" [(ngModel)]="x.last_name">
                     <input type="text" class="" [(ngModel)]="x.location"> 
-                    <button md-raised-button (click)="removeData(x.id)">remove</button> 
+                    <button md-raised-button (click)="removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')">remove</button> 
                     <button md-raised-button (click)="updateData(x.id)">update</button> 
                   </li>
                 </ul>
