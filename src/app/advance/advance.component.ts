@@ -69,10 +69,13 @@ export class AdvanceComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  //path:string = 'https://my-rest-api-postgre.herokuapp.com';
+  path: string = 'http://127.0.0.1:8000';
+
   getDataObject: object;
   getData() {
-    this.http.get('https://my-rest-api-postgre.herokuapp.com/information-list/', ).subscribe(data => {
-      //this.http.get('http://127.0.0.1:8000/information-list/', ).retry(3).subscribe(data => {
+    this.http.get(this.path + '/information-list/', ).subscribe(data => {
       this.getDataObject = data;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -83,13 +86,11 @@ export class AdvanceComponent implements OnInit {
     };
   }
 
-  putData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+  postData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
-      .post('https://my-rest-api-postgre.herokuapp.com/information-list/', body, {
-        //.post('http://127.0.0.1:8000/information-list/', body, {
-        headers: new HttpHeaders().set('Content-Type', 'application/json'), //python
-        // headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'), //php
+      .post(this.path + '/information-list/', body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
       .retry(3)
       .subscribe(data => {
@@ -101,6 +102,7 @@ export class AdvanceComponent implements OnInit {
       }
       );
   }
+
   removeDataObject: object;
   removeData(id: string, message: string, action: string) {
     let pk = id;
@@ -110,7 +112,7 @@ export class AdvanceComponent implements OnInit {
       'Content-Type': 'application/json'
     });
 
-    this.http.delete("https://my-rest-api-postgre.herokuapp.com/information-request/" + pk, options).subscribe(data => {
+    this.http.delete(this.path + '/information-request/' + pk, options).subscribe(data => {
       this.snackBar.open(message, action, {
         duration: 3000,
       });
@@ -124,8 +126,25 @@ export class AdvanceComponent implements OnInit {
 
   }
 
-  updateData(id: number) {
-    console.log(id + " this will be updated");
+  putData(id: number, fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+    let pk = id;
+    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
+    let jsonString = JSON.stringify(body);
+
+    this.http
+      .put(this.path + '/information-request/' + pk, jsonString, {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      })
+      .retry(3)
+      .subscribe(data => {
+        this.snackBar.open(message, action, {
+          duration: 3000,
+        });
+      }, error => {
+        // console.log(JSON.stringify(error.json()));
+        console.log('An error occurred:', error.message);
+      }
+      );
   }
 
   getTxt() {
@@ -136,11 +155,11 @@ export class AdvanceComponent implements OnInit {
 const httprequest: httprequests[] = [
   {
     type: 'Http Request Get / Put / Delete',
-    explaination: 'Una sa lahat i import sa nato ang library and i butang where in aha na locate imung component. Ibutang ni na library import { HttpClient, HttpErrorResponse } from "@angular/common/http";.And gusto nako naay live na api so sa w3schools nako kuhaon https://www.w3schools.com/angular/customers.php',
-    code: 'constructor(private http: HttpClient) {}',
-    furtherexplaination1: 'Sa kani na code kay gi private ang HttpCient. Pwede ra sad mag pubic pero ma prefer nako ang private',
-    code2: "this.http.get('https://my-sample-rest-api.herokuapp.com/credentials/?format=json').subscribe(data => { this.results = data['records']; console.log(this.results); })",
-    furtherexplaination2: 'Mao ni akong ginagamit na code para matawag ang api. And gina anad sad nako na kung kuhaon is GET and kung mag hatag is POST.'
+    explaination: '....',
+    code: '....',
+    furtherexplaination1: '....',
+    code2: "....",
+    furtherexplaination2: '....'
   }, {
     type: 'Http Request Post ',
     explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data',

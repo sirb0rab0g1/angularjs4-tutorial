@@ -25,7 +25,7 @@
                     <input type="text" class="" [(ngModel)]="x.last_name">
                     <input type="text" class="" [(ngModel)]="x.location"> 
                     <button md-raised-button (click)="removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')">remove</button> 
-                    <button md-raised-button (click)="updateData(x.id)">update</button> 
+                    <button md-raised-button (click)="putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')">update</button> 
                   </li>
                 </ul>
               </md-card>
@@ -36,7 +36,7 @@
               <input type="text" name="" id="" [(ngModel)]="lname" placeholder="Last name">
               <input type="text" name="" id="" [(ngModel)]="loc"  placeholder="Location"><br>
               {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
-              <button md-raised-button (click)="putData(fname,mname,lname,loc,'Data stored ','Close')">Click me to send request</button>
+              <button md-raised-button (click)="postData(fname,mname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
           </md-card>
 

@@ -26,6 +26,7 @@ import { AccordionModule, FieldsetModule } from 'primeng/primeng';
 
 //rxjs
 import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/map';
 
 //libraries
 import { PushNotificationComponent } from 'ng2-notifications/ng2-notifications';
