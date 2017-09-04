@@ -16,7 +16,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /***/ "../../../../../src/app/advance/advance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button md-raised-button (click)=\"getData()\">Click me to view request</button>\n                <ul class=\"ul-margin\">\n                  <li *ngFor=\"let x of getDataObject\">\n                    \n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.first_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.middle_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.last_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.location\"> \n                    <button md-raised-button (click)=\"removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')\">remove</button> \n                    <button md-raised-button (click)=\"putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')\">update</button> \n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"fname\" placeholder=\"First name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"mname\" placeholder=\"Middle name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"lname\" placeholder=\"Last name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"loc\"  placeholder=\"Location\"><br>\n              {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>\n              <button md-raised-button (click)=\"postData(fname,mname,lname,loc,'Data stored ','Close')\">Click me to send request</button>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"templating\">\n      <h1>Templating</h1>\n      <p-accordion class=\"templating\">\n        <p-accordionTab header=\"{{temp.type}}\" *ngFor=\"let temp of Template;let index = index;\">\n          <p class=\"\">{{temp.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{temp.code}}<br>\n            <pre class=\"\">{{temp.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"styling\">\n      <h1>Style</h1>\n      <p-accordion class=\"style\">\n        <p-accordionTab header=\"{{styl.type}}\" *ngFor=\"let styl of Style;let index = index;\">\n          <p class=\"\">{{styl.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{styl.code}}<br>\n            <pre class=\"\">{{styl.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"ui-g advance\" style=\"overflow-y:auto;\">\n  <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n\n    <div class=\"httprequestget\">\n      <h1>Http Request</h1>\n      <p-accordion class=\"Httprequestget\">\n        <p-accordionTab header=\"{{httpg.type}}\" *ngFor=\"let httpg of Httprequestget;let index = index;\">\n          <p class=\"\">{{httpg.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{httpg.code}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination1}}</pre> {{httpg.code2}}<br>\n            <pre class=\"\">{{httpg.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                <button md-raised-button (click)=\"getData()\">Click me to view request</button>\n                <md-spinner *ngIf=\"spinner\"></md-spinner><br><br>\n                <ul class=\"ul-margin\">\n                  <li *ngFor=\"let x of getDataObject\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.first_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.middle_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.last_name\">\n                    <input type=\"text\" class=\"\" [(ngModel)]=\"x.location\">\n                    <button md-raised-button (click)=\"removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')\">remove</button>\n                    <button md-raised-button (click)=\"putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')\">update</button>\n                  </li>\n                </ul>\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-spinner *ngIf=\"postSpinner\"></md-spinner><br><br>\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"fname\" placeholder=\"First name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"mname\" placeholder=\"Middle name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"lname\" placeholder=\"Last name\">\n              <input type=\"text\" name=\"\" id=\"\" [(ngModel)]=\"loc\" placeholder=\"Location\"><br> {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}\n              <br>\n              <button md-raised-button (click)=\"postData(fname,mname,lname,loc,'Data stored ','Close')\">Click me to send request</button>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"routes\">\n      <h1>Routes</h1>\n      <p-accordion class=\"routes\">\n        <p-accordionTab header=\"{{router.type}}\" *ngFor=\"let router of Routes;let index = index;\">\n          <p class=\"\">{{router.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{router.code}}<br>\n            <pre class=\"\">{{router.furtherexplaination1}}</pre> {{router.code2}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination2}}</pre> {{router.code3}}\n            <br>\n            <pre class=\"\">{{router.furtherexplaination3}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                Ang output is naa na sa screen mismo. Kanang basic and advance na naa sa akong side menu\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"ngmodules\">\n      <h1>NgModules</h1>\n      <p-accordion class=\"ngmodules\">\n        <p-accordionTab header=\"{{ngmod.type}}\" *ngFor=\"let ngmod of Ngmodules;let index = index;\">\n          <p class=\"\">{{ngmod.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{ngmod.code}}<br>\n            <pre class=\"\">{{ngmod.furtherexplaination1}}</pre> {{ngmod.code2}}\n            <br>\n            <pre class=\"\">{{ngmod.furtherexplaination2}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 2\">\n              <md-card>\n                {{ngmod.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"templating\">\n      <h1>Templating</h1>\n      <p-accordion class=\"templating\">\n        <p-accordionTab header=\"{{temp.type}}\" *ngFor=\"let temp of Template;let index = index;\">\n          <p class=\"\">{{temp.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{temp.code}}<br>\n            <pre class=\"\">{{temp.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{temp.soutput}}\n              </md-card>\n            </ng-template>\n\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n    <div class=\"styling\">\n      <h1>Style</h1>\n      <p-accordion class=\"style\">\n        <p-accordionTab header=\"{{styl.type}}\" *ngFor=\"let styl of Style;let index = index;\">\n          <p class=\"\">{{styl.explaination}}</p>\n          <p class=\"\">\n            Code:\n          </p>\n          <md-card>\n            {{styl.code}}<br>\n            <pre class=\"\">{{styl.furtherexplaination1}}</pre>\n            <p class=\"p-class\">Output</p>\n            <ng-template [ngIf]=\"index == 0\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n            <ng-template [ngIf]=\"index == 1\">\n              <md-card>\n                {{styl.soutput}}\n              </md-card>\n            </ng-template>\n          </md-card>\n\n        </p-accordionTab>\n      </p-accordion>\n    </div>\n\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -70,13 +70,18 @@ var AdvanceComponent = (function () {
         this.displayedColumns = ['userId', 'userName', 'progress', 'color'];
         //path:string = 'https://my-rest-api-postgre.herokuapp.com';
         this.path = 'http://127.0.0.1:8000';
+        this.spinner = false;
+        this.postSpinner = false;
     }
     AdvanceComponent.prototype.ngOnInit = function () {
     };
     AdvanceComponent.prototype.getData = function () {
         var _this = this;
+        this.spinner = true;
         this.http.get(this.path + '/information-list/').subscribe(function (data) {
             _this.getDataObject = data;
+            _this.spinner = false;
+            return _this.spinner;
         }), function (err) {
             if (err.error instanceof Error) {
                 console.log('An error occurred:', err.error.message);
@@ -88,6 +93,7 @@ var AdvanceComponent = (function () {
     };
     AdvanceComponent.prototype.postData = function (fname, mname, lname, loc, message, action) {
         var _this = this;
+        this.postSpinner = true;
         var body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
         this.http
             .post(this.path + '/information-list/', body, {
@@ -95,6 +101,7 @@ var AdvanceComponent = (function () {
         })
             .retry(3)
             .subscribe(function (data) {
+            _this.postSpinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
@@ -104,12 +111,14 @@ var AdvanceComponent = (function () {
     };
     AdvanceComponent.prototype.removeData = function (id, message, action) {
         var _this = this;
+        this.spinner = true;
         var pk = id;
         var options = {};
         options.header = new Headers({
             'Content-Type': 'application/json'
         });
         this.http.delete(this.path + '/information-request/' + pk, options).subscribe(function (data) {
+            _this.spinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
@@ -125,6 +134,7 @@ var AdvanceComponent = (function () {
     AdvanceComponent.prototype.putData = function (id, fname, mname, lname, loc, message, action) {
         var _this = this;
         var pk = id;
+        this.spinner = true;
         var body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
         var jsonString = JSON.stringify(body);
         this.http
@@ -133,11 +143,11 @@ var AdvanceComponent = (function () {
         })
             .retry(3)
             .subscribe(function (data) {
+            _this.spinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
         }, function (error) {
-            // console.log(JSON.stringify(error.json()));
             console.log('An error occurred:', error.message);
         });
     };
@@ -152,7 +162,7 @@ AdvanceComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/advance/advance.component.html"),
         styles: [__webpack_require__("../../../../../src/app/advance/advance.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MdSnackBar */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["i" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["i" /* MdSnackBar */]) === "function" && _b || Object])
 ], AdvanceComponent);
 
 var httprequest = [
@@ -422,6 +432,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15_ngx_facebook__["a" /* FacebookModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_10__angular_material__["f" /* MdInputModule */],
             __WEBPACK_IMPORTED_MODULE_10__angular_material__["g" /* MdSnackBarModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_material__["h" /* MdProgressSpinnerModule */]
         ],
         providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
