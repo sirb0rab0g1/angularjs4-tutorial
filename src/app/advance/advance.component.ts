@@ -163,14 +163,14 @@ export class AdvanceComponent implements OnInit {
 
 const httprequest: httprequests[] = [
   {
-    type: 'Http Request Get / Put / Delete',
+    type: 'Http Request Get / Put / Delete (not yet a live refresh. needs to reload the page again to take effect)',
     explaination: '....',
     code: '....',
     furtherexplaination1: '....',
     code2: "....",
     furtherexplaination2: '....'
   }, {
-    type: 'Http Request Post ',
+    type: 'Http Request Post (not yet a live refresh. needs to reload the page again to take effect)',
     explaination: 'Same ra sa HTTP GET pero kita na mismo naga pasa sa data',
     code: "let body = { first_name: fname, last_name: lname, location: loc };",
     furtherexplaination1: 'Sa kani na code ako sang gi pang declare tanan after ana i cast nako tanan sa string para matawag sa akong body kay ang body kay mo dawat lang ug string sa akong na hibal.an',
