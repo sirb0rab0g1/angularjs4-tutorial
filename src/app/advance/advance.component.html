@@ -17,25 +17,26 @@
             <ng-template [ngIf]="index == 0">
               <md-card>
                 <button md-raised-button (click)="getData()">Click me to view request</button>
+                <md-spinner *ngIf="spinner"></md-spinner><br><br>
                 <ul class="ul-margin">
                   <li *ngFor="let x of getDataObject">
-                    
                     <input type="text" class="" [(ngModel)]="x.first_name">
                     <input type="text" class="" [(ngModel)]="x.middle_name">
                     <input type="text" class="" [(ngModel)]="x.last_name">
-                    <input type="text" class="" [(ngModel)]="x.location"> 
-                    <button md-raised-button (click)="removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')">remove</button> 
-                    <button md-raised-button (click)="putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')">update</button> 
+                    <input type="text" class="" [(ngModel)]="x.location">
+                    <button md-raised-button (click)="removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')">remove</button>
+                    <button md-raised-button (click)="putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')">update</button>
                   </li>
                 </ul>
               </md-card>
             </ng-template>
             <ng-template [ngIf]="index == 1">
+              <md-spinner *ngIf="postSpinner"></md-spinner><br><br>
               <input type="text" name="" id="" [(ngModel)]="fname" placeholder="First name">
               <input type="text" name="" id="" [(ngModel)]="mname" placeholder="Middle name">
               <input type="text" name="" id="" [(ngModel)]="lname" placeholder="Last name">
-              <input type="text" name="" id="" [(ngModel)]="loc"  placeholder="Location"><br>
-              {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}<br>
+              <input type="text" name="" id="" [(ngModel)]="loc" placeholder="Location"><br> {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}
+              <br>
               <button md-raised-button (click)="postData(fname,mname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
           </md-card>

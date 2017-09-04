@@ -74,9 +74,13 @@ export class AdvanceComponent implements OnInit {
   path: string = 'http://127.0.0.1:8000';
 
   getDataObject: object;
+  spinner:boolean = false;
   getData() {
+    this.spinner = true;
     this.http.get(this.path + '/information-list/', ).subscribe(data => {
       this.getDataObject = data;
+      this.spinner = false;
+      return this.spinner;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);
@@ -85,8 +89,9 @@ export class AdvanceComponent implements OnInit {
       }
     };
   }
-
+  postSpinner:boolean = false;
   postData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+    this.postSpinner = true;
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
       .post(this.path + '/information-list/', body, {
@@ -94,6 +99,7 @@ export class AdvanceComponent implements OnInit {
       })
       .retry(3)
       .subscribe(data => {
+        this.postSpinner = false;
         this.snackBar.open(message, action, {
           duration: 3000,
         });
@@ -105,6 +111,7 @@ export class AdvanceComponent implements OnInit {
 
   removeDataObject: object;
   removeData(id: string, message: string, action: string) {
+    this.spinner = true;
     let pk = id;
 
     let options: any = {}
@@ -113,6 +120,7 @@ export class AdvanceComponent implements OnInit {
     });
 
     this.http.delete(this.path + '/information-request/' + pk, options).subscribe(data => {
+      this.spinner = false;
       this.snackBar.open(message, action, {
         duration: 3000,
       });
@@ -128,6 +136,7 @@ export class AdvanceComponent implements OnInit {
 
   putData(id: number, fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
     let pk = id;
+    this.spinner = true;
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     let jsonString = JSON.stringify(body);
 
@@ -137,11 +146,11 @@ export class AdvanceComponent implements OnInit {
       })
       .retry(3)
       .subscribe(data => {
+        this.spinner = false;
         this.snackBar.open(message, action, {
           duration: 3000,
         });
       }, error => {
-        // console.log(JSON.stringify(error.json()));
         console.log('An error occurred:', error.message);
       }
       );
