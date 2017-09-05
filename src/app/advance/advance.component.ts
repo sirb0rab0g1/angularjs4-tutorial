@@ -77,8 +77,8 @@ export class AdvanceComponent implements OnInit {
   spinner: boolean = false;
   getData() {
     this.spinner = true;
-    this.http.get(this.path + '/info/information-list/', ).subscribe(data => {
-      this.getDataObject = data;
+    this.http.get(this.path + '/info/personal/', ).subscribe(data => {
+      this.getDataObject = data['results'];
       this.spinner = false;
       return this.spinner;
     }), (err: HttpErrorResponse) => {
@@ -94,7 +94,7 @@ export class AdvanceComponent implements OnInit {
     this.postSpinner = true;
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
-      .post(this.path + '/info/information-list/', body, {
+      .post(this.path + '/info/personal/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
       .retry(3)
@@ -119,7 +119,7 @@ export class AdvanceComponent implements OnInit {
       'Content-Type': 'application/json'
     });
 
-    this.http.delete(this.path + '/info/information-request/' + pk + '/', options).subscribe(data => {
+    this.http.delete(this.path + '/info/personal/' + pk + '/', options).subscribe(data => {
       this.spinner = false;
       this.snackBar.open(message, action, {
         duration: 3000,
@@ -141,7 +141,7 @@ export class AdvanceComponent implements OnInit {
     let jsonString = JSON.stringify(body);
 
     this.http
-      .put(this.path + '/info/information-request/' + pk + '/', jsonString, {
+      .put(this.path + '/info/personal/' + pk + '/', jsonString, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
       .retry(3)
