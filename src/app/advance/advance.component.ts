@@ -74,10 +74,10 @@ export class AdvanceComponent implements OnInit {
   path: string = 'http://127.0.0.1:8000';
 
   getDataObject: object;
-  spinner:boolean = false;
+  spinner: boolean = false;
   getData() {
     this.spinner = true;
-    this.http.get(this.path + '/information-list/', ).subscribe(data => {
+    this.http.get(this.path + '/info/information-list/', ).subscribe(data => {
       this.getDataObject = data;
       this.spinner = false;
       return this.spinner;
@@ -89,12 +89,12 @@ export class AdvanceComponent implements OnInit {
       }
     };
   }
-  postSpinner:boolean = false;
+  postSpinner: boolean = false;
   postData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
     this.postSpinner = true;
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
     this.http
-      .post(this.path + '/information-list/', body, {
+      .post(this.path + '/info/information-list/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
       .retry(3)
@@ -119,7 +119,7 @@ export class AdvanceComponent implements OnInit {
       'Content-Type': 'application/json'
     });
 
-    this.http.delete(this.path + '/information-request/' + pk, options).subscribe(data => {
+    this.http.delete(this.path + '/info/information-request/' + pk + '/', options).subscribe(data => {
       this.spinner = false;
       this.snackBar.open(message, action, {
         duration: 3000,
@@ -141,7 +141,7 @@ export class AdvanceComponent implements OnInit {
     let jsonString = JSON.stringify(body);
 
     this.http
-      .put(this.path + '/information-request/' + pk, jsonString, {
+      .put(this.path + '/info/information-request/' + pk + '/', jsonString, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
       .retry(3)
