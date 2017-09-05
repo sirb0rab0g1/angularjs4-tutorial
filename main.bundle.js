@@ -78,8 +78,8 @@ var AdvanceComponent = (function () {
     AdvanceComponent.prototype.getData = function () {
         var _this = this;
         this.spinner = true;
-        this.http.get(this.path + '/info/information-list/').subscribe(function (data) {
-            _this.getDataObject = data;
+        this.http.get(this.path + '/info/personal/').subscribe(function (data) {
+            _this.getDataObject = data['results'];
             _this.spinner = false;
             return _this.spinner;
         }), function (err) {
@@ -96,7 +96,7 @@ var AdvanceComponent = (function () {
         this.postSpinner = true;
         var body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
         this.http
-            .post(this.path + '/info/information-list/', body, {
+            .post(this.path + '/info/personal/', body, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
             .retry(3)
@@ -117,7 +117,7 @@ var AdvanceComponent = (function () {
         options.header = new Headers({
             'Content-Type': 'application/json'
         });
-        this.http.delete(this.path + '/info/information-request/' + pk + '/', options).subscribe(function (data) {
+        this.http.delete(this.path + '/info/personal/' + pk + '/', options).subscribe(function (data) {
             _this.spinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
@@ -138,7 +138,7 @@ var AdvanceComponent = (function () {
         var body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
         var jsonString = JSON.stringify(body);
         this.http
-            .put(this.path + '/info/information-request/' + pk + '/', jsonString, {
+            .put(this.path + '/info/personal/' + pk + '/', jsonString, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
             .retry(3)
