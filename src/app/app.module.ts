@@ -20,6 +20,7 @@ import {
   MdInputModule,
   MdSnackBarModule,
   MdProgressSpinnerModule,
+  MdAutocompleteModule
 } from '@angular/material';
 
 //prime faces
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     FacebookModule.forRoot(),
     MdInputModule,
     MdSnackBarModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

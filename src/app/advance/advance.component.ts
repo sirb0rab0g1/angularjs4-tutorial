@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MdSnackBar } from '@angular/material';
 import { RequestOptionsArgs } from '@angular/http';
+import { FormControl } from '@angular/forms';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 
 export interface httprequests {
   type: string;
@@ -64,23 +69,39 @@ export class AdvanceComponent implements OnInit {
   results: string[];
   displayedColumns = ['userId', 'userName', 'progress', 'color'];
 
-  constructor(private http: HttpClient, public snackBar: MdSnackBar) { }
+  nameCtrl: FormControl;
+  filteredStates: Observable<any[]>;
+
+
+
+  constructor(private http: HttpClient, public snackBar: MdSnackBar) {
+
+  }
+
 
   ngOnInit() {
+    this.nameCtrl = new FormControl();
 
+  }
+
+
+  filterStates(first_name: string) {
+    return this.getDataObject.filter(state =>
+      state.first_name.toLowerCase().indexOf(first_name.toLowerCase()) === 0);
   }
 
   //path:string = 'https://my-rest-api-postgre.herokuapp.com';
   path: string = 'http://127.0.0.1:8000';
-
-  getDataObject: object;
+  getDataObject: any[];
   spinner: boolean = false;
   getData() {
     this.spinner = true;
     this.http.get(this.path + '/info/personal/', ).subscribe(data => {
       this.getDataObject = data['results'];
+      this.filteredStates = this.nameCtrl.valueChanges
+        .startWith(null)
+        .map(state => state ? this.filterStates(state) : this.getDataObject.slice());
       this.spinner = false;
-      return this.spinner;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);
@@ -159,6 +180,7 @@ export class AdvanceComponent implements OnInit {
   getTxt() {
     alert("coming soon . . . ");
   }
+
 }
 
 const httprequest: httprequests[] = [
