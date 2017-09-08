@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MdSnackBar } from '@angular/material';
 import { RequestOptionsArgs } from '@angular/http';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -73,6 +73,8 @@ export class AdvanceComponent implements OnInit {
 
   //instantiation
   nameCtrl: FormControl;
+  emailFormControl: FormControl;
+  textNullControl: FormControl;
   filteredStates: Observable<any[]>;
   getDataObject: any[];
   removeDataObject: object;
@@ -82,6 +84,8 @@ export class AdvanceComponent implements OnInit {
   spinner: boolean = false;
   click: boolean = false;
   postSpinner: boolean = false;
+  error: string = 'Back end return error ! Please verify your input';
+  action: string = 'Close';
 
   constructor(private http: HttpClient, public snackBar: MdSnackBar) {
 
@@ -89,6 +93,17 @@ export class AdvanceComponent implements OnInit {
 
   ngOnInit() {
     this.nameCtrl = new FormControl();
+
+    //email validation
+    this.emailFormControl = new FormControl('', [
+      Validators.required,
+      Validators.pattern(EMAIL_REGEX)]);
+
+    this.textNullControl = new FormControl('', [
+      Validators.required
+    ]);
+
+    
   }
 
   //methods
@@ -102,6 +117,7 @@ export class AdvanceComponent implements OnInit {
     this.http.get(this.path + '/info/personal/', ).subscribe(data => {
       this.click = true;
       this.getDataObject = data['results'];
+
       this.filteredStates = this.nameCtrl.valueChanges
         .startWith(null)
         .map(state => state ? this.filterStates(state) : this.getDataObject.slice());
@@ -109,15 +125,16 @@ export class AdvanceComponent implements OnInit {
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);
+        
       } else {
         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
       }
     };
   }
-  
-  postData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+
+  postData(fname: string, mname: string, lname: string, loc: string, age: number, email: string, message: string, action: string) {
     this.postSpinner = true;
-    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
+    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc, age: age, email: email };
     this.http
       .post(this.path + '/info/personal/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -129,11 +146,12 @@ export class AdvanceComponent implements OnInit {
           duration: 3000,
         });
       }, error => {
-        console.log(JSON.stringify(error.json()));
+        // alert("Please dont leave any fields empty");
+        this.errorMessage();
       }
       );
   }
-  
+
   removeData(id: string, message: string, action: string) {
     this.spinner = true;
     let pk = id;
@@ -158,10 +176,10 @@ export class AdvanceComponent implements OnInit {
 
   }
 
-  putData(id: number, fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
+  putData(id: number, fname: string, mname: string, lname: string, loc: string, age: number, email: string, message: string, action: string) {
     let pk = id;
     this.spinner = true;
-    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
+    let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc, age: age, email: email };
     let jsonString = JSON.stringify(body);
 
     this.http
@@ -175,10 +193,18 @@ export class AdvanceComponent implements OnInit {
           duration: 3000,
         });
       }, error => {
-        console.log('An error occurred:', error.message);
+        // console.log('An error occurred:', error.message);
+        this.errorMessage();
       }
       );
   }
+
+  errorMessage() {
+    this.snackBar.open(this.error, this.action, {
+      duration: 5000,
+    });
+  }
+
 
 }
 
@@ -272,4 +298,6 @@ const style: styles[] = [
     soutput: "@Component({ selector: 'app-root',templateUrl: './app.component.html',styleUrls: ['./app.component.scss'],})"
   }
 ];
+
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
