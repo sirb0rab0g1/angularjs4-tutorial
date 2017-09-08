@@ -39,10 +39,18 @@
                 <ul class="ul-margin" *ngIf="click == true">
                   <span class="h4">Users</span>
                   <li *ngFor="let x of filteredStates | async">
-                    <input type="text" class="" [(ngModel)]="x.first_name">
-                    <input type="text" class="" [(ngModel)]="x.middle_name">
-                    <input type="text" class="" [(ngModel)]="x.last_name">
-                    <input type="text" class="" [(ngModel)]="x.location">
+                    <md-input-container>
+                      <input mdInput placeholder="first name" type="text" class="" [(ngModel)]="x.first_name">
+                    </md-input-container>
+                    <md-input-container>
+                      <input mdInput placeholder="middle name" type="text" class="" [(ngModel)]="x.middle_name">
+                    </md-input-container>
+                    <md-input-container>
+                      <input mdInput placeholder="last name" type="text" class="" [(ngModel)]="x.last_name">
+                    </md-input-container>
+                    <md-input-container>
+                      <input mdInput placeholder="location" type="text" class="" [(ngModel)]="x.location">
+                    </md-input-container>
                     <button md-raised-button (click)="removeData(x.id,'Data Deleted (i refresh sa ang page kay di pa ni live refresh)','Close')">remove</button>
                     <button md-raised-button (click)="putData(x.id,x.first_name,x.middle_name,x.last_name,x.location,'Data updated','Close')">update</button>
                   </li>
