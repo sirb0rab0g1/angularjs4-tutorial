@@ -16,24 +16,29 @@
             <p class="p-class">Output</p>
             <ng-template [ngIf]="index == 0">
               <md-card>
-                <button md-raised-button (click)="getData()">Click me to view request</button>
+                <span mdTooltip="Get request to use searching">
+                  <button md-raised-button (click)="getData()">
+                  Click me to view request
+                  </button>
+                </span>
                 <md-spinner *ngIf="spinner"></md-spinner><br><br>
                 <form class="example-form">
-                  <ng-template [ngIf]="getObjectData == undefined">
+                  <ng-template [ngIf]="click == true">
                     <md-input-container class="example-full-width">
                       <input mdInput placeholder="Names" aria-label="Names" [mdAutocomplete]="auto" [formControl]="nameCtrl">
                       <md-autocomplete #auto="mdAutocomplete">
                         <md-option *ngFor="let state of filteredStates | async" [value]="state.first_name">
-                          <img style="vertical-align:middle;" aria-hidden src="http://ekmillerlab.mit.edu/wp-content/uploads/2016/04/male-member.jpg" height="25" />
+                          <img style="vertical-align:middle;" aria-hidden src="http://ekmillerlab.mit.edu/wp-content/uploads/2016/04/male-member.jpg"
+                            height="25" />
                           <span>{{ state.first_name }} {{state.middle_name}} {{state.last_name}}</span>
                         </md-option>
                       </md-autocomplete>
                     </md-input-container>
                   </ng-template>
-
                 </form>
-                <ul class="ul-margin">
-                  <li *ngFor="let x of getDataObject">
+                <ul class="ul-margin" *ngIf="click == true">
+                  <span class="h4">Users</span>
+                  <li *ngFor="let x of filteredStates | async">
                     <input type="text" class="" [(ngModel)]="x.first_name">
                     <input type="text" class="" [(ngModel)]="x.middle_name">
                     <input type="text" class="" [(ngModel)]="x.last_name">

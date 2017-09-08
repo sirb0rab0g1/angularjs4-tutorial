@@ -60,43 +60,47 @@ export interface styles {
   styleUrls: ['./advance.component.scss']
 })
 export class AdvanceComponent implements OnInit {
+  //casts
   Httprequestget = httprequest;
   Routes = route;
   Ngmodules = ngmodule;
   Template = template;
   Style = style;
-  //http
+
+  //http request
   results: string[];
   displayedColumns = ['userId', 'userName', 'progress', 'color'];
 
+  //instantiation
   nameCtrl: FormControl;
   filteredStates: Observable<any[]>;
+  getDataObject: any[];
+  removeDataObject: object;
 
-
+  //variable declaration
+  path: string = 'http://127.0.0.1:8000';
+  spinner: boolean = false;
+  click: boolean = false;
+  postSpinner: boolean = false;
 
   constructor(private http: HttpClient, public snackBar: MdSnackBar) {
 
   }
 
-
   ngOnInit() {
     this.nameCtrl = new FormControl();
-
   }
 
-
+  //methods
   filterStates(first_name: string) {
     return this.getDataObject.filter(state =>
       state.first_name.toLowerCase().indexOf(first_name.toLowerCase()) === 0);
   }
 
-  //path:string = 'https://my-rest-api-postgre.herokuapp.com';
-  path: string = 'http://127.0.0.1:8000';
-  getDataObject: any[];
-  spinner: boolean = false;
   getData() {
     this.spinner = true;
     this.http.get(this.path + '/info/personal/', ).subscribe(data => {
+      this.click = true;
       this.getDataObject = data['results'];
       this.filteredStates = this.nameCtrl.valueChanges
         .startWith(null)
@@ -110,7 +114,7 @@ export class AdvanceComponent implements OnInit {
       }
     };
   }
-  postSpinner: boolean = false;
+  
   postData(fname: string, mname: string, lname: string, loc: string, message: string, action: string) {
     this.postSpinner = true;
     let body = { first_name: fname, middle_name: mname, last_name: lname, location: loc };
@@ -129,8 +133,7 @@ export class AdvanceComponent implements OnInit {
       }
       );
   }
-
-  removeDataObject: object;
+  
   removeData(id: string, message: string, action: string) {
     this.spinner = true;
     let pk = id;
@@ -175,10 +178,6 @@ export class AdvanceComponent implements OnInit {
         console.log('An error occurred:', error.message);
       }
       );
-  }
-
-  getTxt() {
-    alert("coming soon . . . ");
   }
 
 }
