@@ -27,7 +27,7 @@
                     <md-input-container class="example-full-width">
                       <input mdInput placeholder="Names" aria-label="Names" [mdAutocomplete]="auto" [formControl]="nameCtrl">
                       <md-autocomplete #auto="mdAutocomplete">
-                        <md-option *ngFor="let state of filteredStates | async" [value]="state.first_name">
+                        <md-option *ngFor="let state of filteredStates | async; let index = index;" [value]="state.first_name">
                           <img style="vertical-align:middle;" aria-hidden src="http://ekmillerlab.mit.edu/wp-content/uploads/2016/04/male-member.jpg"
                             height="25" />
                           <span>{{ state.first_name }} {{state.middle_name}} {{state.last_name}}</span>
@@ -59,10 +59,21 @@
             </ng-template>
             <ng-template [ngIf]="index == 1">
               <md-spinner *ngIf="postSpinner"></md-spinner><br><br>
-              <input type="text" name="" id="" [(ngModel)]="fname" placeholder="First name">
-              <input type="text" name="" id="" [(ngModel)]="mname" placeholder="Middle name">
-              <input type="text" name="" id="" [(ngModel)]="lname" placeholder="Last name">
-              <input type="text" name="" id="" [(ngModel)]="loc" placeholder="Location"><br> {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}
+              <md-input-container>
+                <input type="text" name="" id="" mdInput [(ngModel)]="fname" placeholder="First name">
+              </md-input-container>
+              <md-input-container>
+                <input type="text" name="" id="" mdInput [(ngModel)]="mname" placeholder="Middle name">
+              </md-input-container>
+              <md-input-container>
+                <input type="text" name="" id="" mdInput [(ngModel)]="lname" placeholder="Last name">
+              </md-input-container>
+              <md-input-container>
+                <input type="text" name="" id="" mdInput [(ngModel)]="loc" placeholder="Location">
+              </md-input-container>
+
+              <br> {{fname}}&nbsp;{{mname}}&nbsp;{{lname}}&nbsp;{{loc}}
+
               <br>
               <button md-raised-button (click)="postData(fname,mname,lname,loc,'Data stored ','Close')">Click me to send request</button>
             </ng-template>
