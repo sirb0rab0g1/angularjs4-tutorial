@@ -84,6 +84,8 @@ var AdvanceComponent = (function () {
         this.postSpinner = false;
         this.error = 'Back end return error ! Please verify your input';
         this.action = 'Close';
+        this.emailError = 'Email already exists.';
+        this.emailAction = 'Close';
     }
     AdvanceComponent.prototype.ngOnInit = function () {
         this.nameCtrl = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]();
@@ -114,10 +116,10 @@ var AdvanceComponent = (function () {
             _this.spinner = false;
         }), function (err) {
             if (err.error instanceof Error) {
-                console.log('An error occurred:', err.error.message);
+                console.log('An error occurred:', err.message);
             }
             else {
-                console.log("Backend returned code " + err.status + ", body was: " + err.error);
+                console.log("Backend returned code " + err.status + ", body was: " + err.statusText);
             }
         };
     };
@@ -129,15 +131,18 @@ var AdvanceComponent = (function () {
             .post(this.path + '/info/personal/', body, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
-            .retry(3)
             .subscribe(function (data) {
             _this.postSpinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
-        }, function (error) {
-            // alert("Please dont leave any fields empty");
-            _this.errorMessage();
+        }, function (err) {
+            if (err.error.email == 'True') {
+                _this.emailExist();
+            }
+            else if (err.error.first_name == 'True') {
+                console.log('first name already existed');
+            }
         });
     };
     AdvanceComponent.prototype.removeData = function (id, message, action) {
@@ -153,14 +158,14 @@ var AdvanceComponent = (function () {
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
-        }), function (err) {
+        }, function (err) {
             if (err.error instanceof Error) {
                 console.log('An error occurred:', err.error.message);
             }
             else {
                 console.log("Backend returned code " + err.status + ", body was: " + err.error);
             }
-        };
+        });
     };
     AdvanceComponent.prototype.putData = function (id, fname, mname, lname, loc, age, email, message, action) {
         var _this = this;
@@ -172,19 +177,28 @@ var AdvanceComponent = (function () {
             .put(this.path + '/info/personal/' + pk + '/', jsonString, {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpHeaders */]().set('Content-Type', 'application/json'),
         })
-            .retry(3)
             .subscribe(function (data) {
             _this.spinner = false;
             _this.snackBar.open(message, action, {
                 duration: 3000,
             });
-        }, function (error) {
-            // console.log('An error occurred:', error.message);
-            _this.errorMessage();
+        }, function (err) {
+            if (err.error.email == 'True') {
+                _this.emailExist();
+            }
+            else {
+                _this.errorMessage();
+            }
         });
     };
+    //error functions
     AdvanceComponent.prototype.errorMessage = function () {
         this.snackBar.open(this.error, this.action, {
+            duration: 5000,
+        });
+    };
+    AdvanceComponent.prototype.emailExist = function () {
+        this.snackBar.open(this.emailError, this.emailAction, {
             duration: 5000,
         });
     };
@@ -509,6 +523,7 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_basic__ = __webpack_require__("../../../../../src/app/mock-basic.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BasicsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -520,20 +535,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var BasicsComponent = (function () {
     function BasicsComponent() {
-        this.Declaration = declaration;
-        this.Condition = condition;
-        this.Parsing = parsing;
-        this.Array = array;
-        this.Object = object;
-        this.Objectarray = objectarray;
-        this.Loops = loop;
-        this.Func = func;
-        this.Arithmetic = arithmetic;
-        this.Databinding = databinding;
-        this.Export = exported;
-        this.Event = event;
+        this.Declaration = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["a" /* declaration */];
+        this.Condition = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["b" /* condition */];
+        this.Parsing = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["c" /* parsing */];
+        this.Array = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["d" /* array */];
+        this.Object = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["e" /* object */];
+        this.Objectarray = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["f" /* objectarray */];
+        this.Loops = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["g" /* loop */];
+        this.Func = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["h" /* func */];
+        this.Arithmetic = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["i" /* arithmetic */];
+        this.Databinding = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["j" /* databinding */];
+        this.Export = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["k" /* exported */];
+        this.Event = __WEBPACK_IMPORTED_MODULE_1__mock_basic__["l" /* event */];
         this.x = 10;
         //declarations
         this.str = 'this is string';
@@ -604,6 +620,26 @@ BasicsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], BasicsComponent);
 
+//# sourceMappingURL=basics.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/mock-basic.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return declaration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return condition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return parsing; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return array; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return object; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return objectarray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return loop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return func; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return arithmetic; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return databinding; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return exported; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return event; });
 var declaration = [
     {
         type: "String",
@@ -779,7 +815,7 @@ var event = [
         furtherexplaination2: 'Then sa akong function nag buhat sad kog sample alert para naa lay mo prompt once akong i press ang Double click event',
     }
 ];
-//# sourceMappingURL=basics.component.js.map
+//# sourceMappingURL=mock-basic.js.map
 
 /***/ }),
 
