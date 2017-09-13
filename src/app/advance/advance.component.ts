@@ -86,6 +86,8 @@ export class AdvanceComponent implements OnInit {
   postSpinner: boolean = false;
   error: string = 'Back end return error ! Please verify your input';
   action: string = 'Close';
+  emailError: string = 'Email already exists.';
+  emailAction: string = 'Close';
 
   constructor(private http: HttpClient, public snackBar: MdSnackBar) {
 
@@ -103,7 +105,7 @@ export class AdvanceComponent implements OnInit {
       Validators.required
     ]);
 
-    
+
   }
 
   //methods
@@ -124,10 +126,10 @@ export class AdvanceComponent implements OnInit {
       this.spinner = false;
     }), (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
-        console.log('An error occurred:', err.error.message);
-        
+        console.log('An error occurred:', err.message);
+
       } else {
-        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        console.log(`Backend returned code ${err.status}, body was: ${err.statusText}`);
       }
     };
   }
@@ -139,17 +141,18 @@ export class AdvanceComponent implements OnInit {
       .post(this.path + '/info/personal/', body, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
-      .retry(3)
       .subscribe(data => {
         this.postSpinner = false;
         this.snackBar.open(message, action, {
           duration: 3000,
         });
-      }, error => {
-        // alert("Please dont leave any fields empty");
-        this.errorMessage();
-      }
-      );
+      }, (err: HttpErrorResponse) => {
+        if (err.error.email == 'True') {
+          this.emailExist();
+        }else if (err.error.first_name == 'True'){
+          console.log('first name already existed');
+        }
+      });
   }
 
   removeData(id: string, message: string, action: string) {
@@ -166,13 +169,13 @@ export class AdvanceComponent implements OnInit {
       this.snackBar.open(message, action, {
         duration: 3000,
       });
-    }), (err: HttpErrorResponse) => {
+    }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log('An error occurred:', err.error.message);
       } else {
         console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
       }
-    }
+    });
 
   }
 
@@ -186,26 +189,33 @@ export class AdvanceComponent implements OnInit {
       .put(this.path + '/info/personal/' + pk + '/', jsonString, {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
       })
-      .retry(3)
       .subscribe(data => {
         this.spinner = false;
         this.snackBar.open(message, action, {
           duration: 3000,
         });
-      }, error => {
-        // console.log('An error occurred:', error.message);
-        this.errorMessage();
+      }, (err: HttpErrorResponse) => {
+        if (err.error.email == 'True') {
+          this.emailExist();
+        }else{
+          this.errorMessage();
+        }
       }
       );
   }
 
+  //error functions
   errorMessage() {
     this.snackBar.open(this.error, this.action, {
       duration: 5000,
     });
   }
 
-
+  emailExist() {
+    this.snackBar.open(this.emailError, this.emailAction, {
+      duration: 5000,
+    });
+  }
 }
 
 const httprequest: httprequests[] = [

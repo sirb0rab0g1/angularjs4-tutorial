@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
+import { declarations } from '../basic';
 
-export interface declarations {
-  type: string;
-  explaination: string;
-  code: string;
-  furtherexplaination1: string;
-}
+// export interface declarations {
+//   type: string;
+//   explaination: string;
+//   code: string;
+//   furtherexplaination1: string;
+// }
 
 export interface conditions {
   type: string;
@@ -92,8 +93,8 @@ export interface events {
 })
 
 export class BasicsComponent implements OnInit {
-
-  Declaration = declaration;
+  @Input() Declaration: declarations;
+  // Declaration = declaration;
   Condition = condition;
   Parsing = parsing;
   Array = array;
@@ -188,24 +189,24 @@ export class BasicsComponent implements OnInit {
 
 }
 
-const declaration: declarations[] = [
-  {
-    type: "String",
-    explaination: "Declaring str to string",
-    code: "str: string = 'this is string';",
-    furtherexplaination1: 'Sa kani na instance gi global nato ang atong string para ma cast siya inside method for example like let samplestring = this.str;'
-  }, {
-    type: "Number",
-    explaination: "Declaring num to number",
-    code: "num:number = 10;",
-    furtherexplaination1: 'Sa kani na instance gi global nato ang atong number para ma cast siya inside method for example like let samplenumber = this.num;'
-  }, {
-    type: "Boolean",
-    explaination: "Declaring bol to boolean",
-    code: "bol:boolean = true;",
-    furtherexplaination1: 'Sa kani na instance gi global nato ang atong boolean para ma cast siya inside method for example like let sampleboolean = this.bol;'
-  }
-];
+// const declaration: declarations[] = [
+//   {
+//     type: "String",
+//     explaination: "Declaring str to string",
+//     code: "str: string = 'this is string';",
+//     furtherexplaination1: 'Sa kani na instance gi global nato ang atong string para ma cast siya inside method for example like let samplestring = this.str;'
+//   }, {
+//     type: "Number",
+//     explaination: "Declaring num to number",
+//     code: "num:number = 10;",
+//     furtherexplaination1: 'Sa kani na instance gi global nato ang atong number para ma cast siya inside method for example like let samplenumber = this.num;'
+//   }, {
+//     type: "Boolean",
+//     explaination: "Declaring bol to boolean",
+//     code: "bol:boolean = true;",
+//     furtherexplaination1: 'Sa kani na instance gi global nato ang atong boolean para ma cast siya inside method for example like let sampleboolean = this.bol;'
+//   }
+// ];
 
 const condition: conditions[] = [
   {
