@@ -31,7 +31,7 @@ export class AppComponent {
   }
 }
 
-const cs: cheatSheet[] = [
+export const cs: cheatSheet[] = [
   { name: 'Basics', link: 'basic' },
   { name: 'Advance', link: 'advance' }
 ];

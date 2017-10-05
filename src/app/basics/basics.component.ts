@@ -35,7 +35,6 @@ import {
 } from '../mock-basic';
 
 
-
 @Component({
   selector: 'app-basics',
   templateUrl: './basics.component.html',
@@ -43,18 +42,18 @@ import {
 })
 
 export class BasicsComponent implements OnInit {
-  Declaration = declaration;
-  Condition = condition;
-  Parsing = parsing;
-  Array = array;
-  Object = object;
-  Objectarray = objectarray;
-  Loops = loop;
-  Func = func;
-  Arithmetic = arithmetic;
-  Databinding = databinding;
-  Export = exported;
-  Event = event;
+  @Input() Declaration = declaration;
+  @Input() Condition = condition;
+  @Input() Parsing = parsing;
+  @Input() Array = array;
+  @Input() Object = object;
+  @Input() Objectarray = objectarray;
+  @Input() Loops = loop;
+  @Input() Func = func;
+  @Input() Arithmetic = arithmetic;
+  @Input() Databinding = databinding;
+  @Input() Export = exported;
+  @Input() Event = event;
 
 
   constructor() {

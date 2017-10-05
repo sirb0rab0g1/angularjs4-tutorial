@@ -80,7 +80,7 @@ export class AdvanceComponent implements OnInit {
   removeDataObject: object;
 
   //variable declaration
-  path: string = 'http://127.0.0.1:8000';
+  path: string = 'https://my-rest-api-postgre.herokuapp.com';
   spinner: boolean = false;
   click: boolean = false;
   postSpinner: boolean = false;
